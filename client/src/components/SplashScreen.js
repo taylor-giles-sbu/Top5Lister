@@ -29,19 +29,29 @@ export default function SplashScreen() {
                             id="btn_create_account" 
                             variant="contained"
                             color="accent"
+                            href="/register/"
                         >
                             Create an Account
                         </Button>
                     </Grid>
                     <Grid item >
-                        <Button color="accent" id="btn_login" variant="outlined">
+                        <Button 
+                            href="/login/" 
+                            color="accent" 
+                            id="btn_login" 
+                            variant="outlined"
+                        >
                             Log In 
                         </Button>
                     </Grid>
                 </Grid>
                 <Grid item justifyContent="center"
                 alignItems="center">
-                    <Button color="primary" id="btn_login_guest" variant="contained">
+                    <Button 
+                        color="primary" 
+                        id="btn_login_guest" 
+                        variant="contained"
+                    >
                         Continue as Guest    
                     </Button>
                 </Grid>
