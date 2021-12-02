@@ -42,7 +42,7 @@ const HomeScreen = () => {
                 <HomeToolbar/>
             </Grid>
             <Grid item>
-                <div> Hi there </div>
+                <ListCard/>
             </Grid>
         </Grid>
     )

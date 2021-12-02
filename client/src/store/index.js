@@ -1,10 +1,8 @@
 import { createContext, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import jsTPS from '../common/jsTPS'
 import api from './store-request-api'
-import MoveItem_Transaction from '../transactions/MoveItem_Transaction'
-import UpdateItem_Transaction from '../transactions/UpdateItem_Transaction'
 import AuthContext from '../auth'
+
 /*
     This is our global data store. Note that it uses the Flux design pattern,
     which makes use of things like actions and reducers. 
@@ -37,9 +35,6 @@ export const HOME_TAB_TYPE = {
     TAB_USERS: "Users",
     TAB_COMMUNITY: "Community"
 }
-
-// WE'LL NEED THIS TO PROCESS TRANSACTIONS
-const tps = new jsTPS();
 
 // WITH THIS WE'RE MAKING OUR GLOBAL DATA STORE
 // AVAILABLE TO THE REST OF THE APPLICATION
@@ -165,6 +160,19 @@ function GlobalStoreContextProvider(props) {
                     isItemEditActive: false,
                     listMarkedForDeletion: null
                 });
+            }
+
+            //CHANGE TAB
+            case GlobalStoreActionType.SET_CURRENT_TAB: {
+                return setStore({
+                    idNamePairs: payload.idNamePairs,
+                    shownIdNamePairs: payload.shownIdNamePairs,
+                    openLists: [],
+                    currentTab: payload.currentTab,
+                    newListCounter: store.newListCounter,
+                    listToEdit: null,
+                    listMarkedForDeletion: null
+                })
             }
             default:
                 return store;
@@ -306,7 +314,14 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.changeTab = function (tab) {
-
+        storeReducer({
+            type: GlobalStoreActionType.SET_CURRENT_TAB, 
+            payload: {
+                idNamePairs: [],
+                shownIdNamePairs: [],
+                currentTab: tab
+            }
+        })
     }
 
     store.sortLists = function (sortBy) {

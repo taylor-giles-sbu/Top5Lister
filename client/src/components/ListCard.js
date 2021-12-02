@@ -6,6 +6,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
+import { Accordion, AccordionSummary, AccordionDetails, Typography, Grid} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 /*
     This is a card in our list of top 5 lists. It lets select
@@ -49,9 +53,10 @@ function ListCard(props) {
 
     async function handleDeleteList(event, id) {
         event.stopPropagation();
-        let _id = event.target.id;
-        _id = ("" + _id).substring("delete-list-".length);
-        store.markListForDeletion(id);
+        console.log("its supposed to stop")
+        // let _id = event.target.id;
+        // _id = ("" + _id).substring("delete-list-".length);
+        // store.markListForDeletion(id);
     }
 
     function handleKeyPress(event) {
@@ -65,65 +70,56 @@ function ListCard(props) {
         setText(event.target.value);
     }
 
-    let selectClass = "unselected-list-card";
-    if (selected) {
-        selectClass = "selected-list-card";
-    }
-    let cardStatus = false;
-    if (store.isListNameEditActive) {
-        cardStatus = true;
-    }
-    let cardElement =
-        <ListItem
-            id={idNamePair._id}
-            key={idNamePair._id}
-            sx={{ marginTop: '15px', display: 'flex', p: 1 }}
-            style={{ width: '100%' }}
-            button
-            onClick={(event) => {
-                handleLoadList(event, idNamePair._id)
-            }
-            }
-            style={{
-                fontSize: '48pt'
-            }}
-        >
-                <Box sx={{ p: 1, flexGrow: 1 }}>{idNamePair.name}</Box>
-                <Box sx={{ p: 1 }}>
-                    <IconButton onClick={handleToggleEdit} aria-label='edit'>
-                        <EditIcon style={{fontSize:'48pt'}} />
-                    </IconButton>
-                </Box>
-                <Box sx={{ p: 1 }}>
-                    <IconButton onClick={(event) => {
-                        handleDeleteList(event, idNamePair._id)
-                    }} aria-label='delete'>
-                        <DeleteIcon style={{fontSize:'48pt'}} />
-                    </IconButton>
-                </Box>
-        </ListItem>
-
-    if (editActive) {
-        cardElement =
-            <TextField
-                margin="normal"
-                required
-                fullWidth
-                id={"list-" + idNamePair._id}
-                label="Top 5 List Name"
-                name="name"
-                autoComplete="Top 5 List Name"
-                className='list-card'
-                onKeyPress={handleKeyPress}
-                onChange={handleUpdateText}
-                defaultValue={idNamePair.name}
-                inputProps={{style: {fontSize: 48}}}
-                InputLabelProps={{style: {fontSize: 24}}}
-                autoFocus
-            />
-    }
     return (
-        cardElement
+        <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Grid container pr={2} direction="row" justifyContent="space-around" alignItems="center">
+                    <Grid item xs>
+                        <Typography variant="h4">
+                            {"Hello!"}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs="auto" container direction="row">
+                        <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="center">
+                            <Grid item container justifyContent="center" direction="row">
+                                <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
+                                    <IconButton size="small">
+                                        <ThumbUpIcon/>
+                                    </IconButton>
+                                    <Typography variant="subtitle2">
+                                        {"5K"}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
+                                    <IconButton size="small">
+                                        <ThumbDownIcon/>
+                                    </IconButton>
+                                    <Typography variant="subtitle2">
+                                        {"10K"}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                            <Grid item >
+                                <Typography variant="subtitle2">
+                                    {"100000 Views"}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs="auto">
+                            <IconButton onClick={handleDeleteList} size="large">
+                                <DeleteIcon fontSize="large"/>
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                    malesuada lacus ex, sit amet blandit leo lobortis eget.
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
     );
 }
 
