@@ -13,15 +13,15 @@ export default function HomeToolbar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
 
-    let homeColor = store.currentTab === HOME_TAB_TYPE.TAB_HOME ? "accent" : "primary"
-    let listsColor = store.currentTab === HOME_TAB_TYPE.TAB_LISTS ? "accent" : "primary"
-    let usersColor = store.currentTab === HOME_TAB_TYPE.TAB_USERS ? "accent" : "primary"
-    let communityColor = store.currentTab === HOME_TAB_TYPE.TAB_COMMUNITY ? "accent" : "primary"
+    let homeColor = store.currentTab === HOME_TAB_TYPE.TAB_HOME ? "accent" : "black"
+    let listsColor = store.currentTab === HOME_TAB_TYPE.TAB_LISTS ? "accent" : "black"
+    let usersColor = store.currentTab === HOME_TAB_TYPE.TAB_USERS ? "accent" : "black"
+    let communityColor = store.currentTab === HOME_TAB_TYPE.TAB_COMMUNITY ? "accent" : "black"
 
     return (
-        <Toolbar sx={{ display: 'flex' }}>
+        <Toolbar>
             <Grid container direction="row" justifyContent="space-between">
-                <Grid container justifyContent="flex-start" item xs={3}>
+                <Grid container justifyContent="space-around" item md={4} lg={3}>
                     <IconButton>
                         <HomeIcon color={homeColor} fontSize='large'/>
                     </IconButton>
@@ -38,7 +38,7 @@ export default function HomeToolbar() {
                 <Grid container justifyContent="center" item xs={6}>
                     <TextField style ={{width: '100%'}} id="search-bar" label="Search" variant="outlined" />
                 </Grid>
-                <Grid container justifyContent="flex-end" item xs={3}>
+                <Grid container justifyContent="center" item xs={2}>
                     <Button size="large"variant="text" color="black" startIcon={<SortIcon fontSize="large"/>}>
                         Sort By
                     </Button>
