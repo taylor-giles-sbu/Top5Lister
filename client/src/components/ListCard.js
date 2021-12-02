@@ -4,8 +4,6 @@ import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
-import TextField from '@mui/material/TextField';
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Grid, List} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -78,13 +76,20 @@ function ListCard(props) {
         <Accordion sx={{ bgcolor: backgroundColor}}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Grid container pr={2} direction="row" justifyContent="space-around" alignItems="center">
-                    <Grid item xs>
-                        <Typography variant="h4">
-                            {"Hello!"}
+                    <Grid item xs container direction="column" justifyContent="center" alignItems="flex-start">
+                        <Typography variant="h5">
+                            {"List name"}
                         </Typography>
+                        <Typography variant="caption">
+                            {"Author"}
+                        </Typography>
+                        <Button variant ="text">
+
+                        </Button>
+
                     </Grid>
                     <Grid item xs="auto" container direction="row">
-                        <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="center">
+                        <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
                             <Grid item container justifyContent="center" direction="row">
                                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
                                     <IconButton size="small">

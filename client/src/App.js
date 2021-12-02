@@ -12,7 +12,7 @@ import {
     WorkspaceScreen
 } from './components'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { purple, amber, deepPurple, grey } from '@mui/material/colors';
+import { indigo, purple, amber, deepPurple, grey } from '@mui/material/colors';
 
 
 /**
@@ -24,10 +24,10 @@ import { purple, amber, deepPurple, grey } from '@mui/material/colors';
     palette: {
         primary: grey,
         secondary: {
-            main: purple[900]
+            main: indigo[900]
         },
         complement: {
-            main: deepPurple[100]
+            main: deepPurple[50]
         },
         accent: {
             main: amber[700]
