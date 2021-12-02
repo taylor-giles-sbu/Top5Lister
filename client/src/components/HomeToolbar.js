@@ -1,8 +1,8 @@
-import { Box, Button, Grid, IconButton, TextField, Toolbar, Typography } from '@mui/material';
+import { Button, Grid, IconButton, TextField, Toolbar } from '@mui/material';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
 import AuthContext from '../auth';
-import { GlobalStoreContext } from '../store'
+import { GlobalStoreContext, HOME_TAB_TYPE } from '../store'
 import HomeIcon from '@mui/icons-material/Home';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PersonIcon from '@mui/icons-material/Person';
@@ -13,21 +13,26 @@ export default function HomeToolbar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
 
+    let homeColor = store.currentTab === HOME_TAB_TYPE.TAB_HOME ? "accent" : "primary"
+    let listsColor = store.currentTab === HOME_TAB_TYPE.TAB_LISTS ? "accent" : "primary"
+    let usersColor = store.currentTab === HOME_TAB_TYPE.TAB_USERS ? "accent" : "primary"
+    let communityColor = store.currentTab === HOME_TAB_TYPE.TAB_COMMUNITY ? "accent" : "primary"
+
     return (
         <Toolbar sx={{ display: 'flex' }}>
             <Grid container direction="row" justifyContent="space-between">
                 <Grid container justifyContent="flex-start" item xs={3}>
                     <IconButton>
-                        <HomeIcon fontSize='large'/>
+                        <HomeIcon color={homeColor} fontSize='large'/>
                     </IconButton>
                     <IconButton>
-                        <GroupsIcon fontSize='large'/>
+                        <GroupsIcon color={listsColor} fontSize='large'/>
                     </IconButton>
                     <IconButton>
-                        <PersonIcon fontSize='large'/>
+                        <PersonIcon color={usersColor} fontSize='large'/>
                     </IconButton>
                     <IconButton>
-                        <FunctionsIcon fontSize='large'/>
+                        <FunctionsIcon color={communityColor} fontSize='large'/>
                     </IconButton>
                 </Grid>
                 <Grid container justifyContent="center" item xs={6}>
