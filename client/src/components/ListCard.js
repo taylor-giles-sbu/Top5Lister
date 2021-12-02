@@ -6,10 +6,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
-import { Accordion, AccordionSummary, AccordionDetails, Typography, Grid} from '@mui/material'
+import { Accordion, AccordionSummary, AccordionDetails, Typography, Grid, List} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { Top5Item } from '.';
 
 /*
     This is a card in our list of top 5 lists. It lets select
@@ -70,8 +71,11 @@ function ListCard(props) {
         setText(event.target.value);
     }
 
+    // TODO Change this according to list publish status
+    let backgroundColor ="complement.main"
+
     return (
-        <Accordion>
+        <Accordion sx={{ bgcolor: backgroundColor}}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Grid container pr={2} direction="row" justifyContent="space-around" alignItems="center">
                     <Grid item xs>
@@ -100,7 +104,7 @@ function ListCard(props) {
                                 </Grid>
                             </Grid>
                             <Grid item >
-                                <Typography variant="subtitle2">
+                                <Typography variant="caption">
                                     {"100000 Views"}
                                 </Typography>
                             </Grid>
@@ -114,10 +118,19 @@ function ListCard(props) {
                 </Grid>
             </AccordionSummary>
             <AccordionDetails>
-                <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    malesuada lacus ex, sit amet blandit leo lobortis eget.
-                </Typography>
+                <Box display="flex" m="auto" alignItems='center' sx={{ 
+                    p: 1,
+                    borderRadius:"16px",
+                    backgroundColor:"secondary.main"
+                    }}>
+                    <List sx={{ width: '100%'}}>
+                        <Top5Item/>
+                        <Top5Item/>
+                        <Top5Item/>
+                        <Top5Item/>
+                        <Top5Item/>
+                    </List>
+                </Box>
             </AccordionDetails>
         </Accordion>
     );

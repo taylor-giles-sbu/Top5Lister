@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import TextField from '@mui/material/TextField';
+import { Typography, Grid } from '@mui/material';
 /*
     This React component represents a single item in our
     Top 5 List, which can be edited or moved around.
@@ -86,61 +87,56 @@ function Top5Item(props) {
         itemClass = "top5-item-dragged-to";
     }
 
-    let cardElement =
-            <ListItem
-                id={'item-' + (index+1)}
-                className={itemClass}
-                onDragStart={(event) => {
-                    handleDragStart(event, (index+1))
-                }}
-                onDragOver={(event) => {
-                    handleDragOver(event, (index+1))
-                }}
-                onDragEnter={(event) => {
-                    handleDragEnter(event, (index+1))
-                }}
-                onDragLeave={(event) => {
-                    handleDragLeave(event, (index+1))
-                }}
-                onDrop={(event) => {
-                    handleDrop(event, (index+1))
-                }}
-                draggable="true"
-                sx={{ display: 'flex', p: 1 }}
-                style={{ width: '100%' }}
-                style={{
-                    fontSize: '48pt'
-                }}
-            >
-            <Box sx={{ p: 1 }}>
-                <IconButton onClick={handleToggleEdit} aria-label='edit'>
-                    <EditIcon style={{fontSize:'48pt'}}  />
-                </IconButton>
-            </Box>
-                <Box sx={{ p: 1, flexGrow: 1 }}>{props.text}</Box>
-            </ListItem>
 
-    if (editActive) {
-        cardElement =    
+    let numberSection =(store.listToEdit === null)
+        ? (<Typography color="accent.main" noWrap variant="h5">
+                1.
+            </Typography>)
+        : (<Box display="flex" m="auto" alignItems='center' sx={{ 
+            p: 1,
+            height: 40,
+            borderRadius:"16px",
+            backgroundColor:"accent.main"
+            }}>
+            {
+            <Typography variant="h5">
+                1.
+             </Typography>
+            }
+        </Box>)
+
+    let textSection = (store.listToEdit === null) 
+        ? (<Typography color="accent.main" noWrap variant="h5">
+                Item
+            </Typography>) 
+        : (<Box display="flex" m="auto" alignItems='center' sx={{ 
+            p: 1,
+            height: 40,
+            borderRadius:"16px",
+            backgroundColor:"accent.main"
+            }}>
             <TextField
-                margin="normal"
-                required
                 fullWidth
-                id={"item-" + (index+1)}
-                label={"Item #" + (index+1)}
-                name="item"
-                autoComplete="Top 5 List Item"
-                className='top5-item'
                 onKeyPress={handleKeyPress}
                 onChange={handleUpdateText}
                 defaultValue={props.text}
-                inputProps={{style: {fontSize: 48}}}
-                InputLabelProps={{style: {fontSize: 24}}}
-                autoFocus
             />
-    }
+        </Box>)
+
     return (
-        cardElement
+        <ListItem
+            sx={{ display: 'flex', p: 1 }}
+            style={{ width: '100%' }}>
+
+            <Grid container direction="row" spacing={1} justifyContent="flex-start" alignItems="center">
+                <Grid item xs="auto">
+                    {numberSection}
+                </Grid>
+                <Grid item xs={10}>
+                    {textSection}
+                </Grid>
+            </Grid>
+        </ListItem>
     );
 }
 
