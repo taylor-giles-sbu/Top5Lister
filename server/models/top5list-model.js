@@ -4,8 +4,15 @@ const Schema = mongoose.Schema
 const Top5ListSchema = new Schema(
     {
         name: { type: String, required: true },
+
+        //TODO: Each item has a String name and a Number of points (for community lists)
         items: { type: [String], required: true },
-        ownerEmail: { type: String }
+        owner: { type: String },
+        isPublished:  { type: Boolean },
+        dateUpdated: { type: Number },
+        comments: [{ user: String, content: String }],
+        userLikes: [{ user: String, liked: Boolean }]
+
     },
     { timestamps: true },
 )

@@ -1,7 +1,7 @@
 import { Button, Grid, IconButton, TextField, Toolbar } from '@mui/material';
 import { useContext, useState } from 'react';
 import AuthContext from '../auth';
-import { GlobalStoreContext, HOME_TAB_TYPE } from '../store'
+import { GlobalStoreContext, HOMESCREEN_TAB_TYPE } from '../store'
 import HomeIcon from '@mui/icons-material/Home';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PersonIcon from '@mui/icons-material/Person';
@@ -12,25 +12,25 @@ export default function HomeToolbar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
 
-    let homeColor = store.currentTab === HOME_TAB_TYPE.TAB_HOME ? "secondary" : "black"
-    let listsColor = store.currentTab === HOME_TAB_TYPE.TAB_LISTS ? "secondary" : "black"
-    let usersColor = store.currentTab === HOME_TAB_TYPE.TAB_USERS ? "secondary" : "black"
-    let communityColor = store.currentTab === HOME_TAB_TYPE.TAB_COMMUNITY ? "secondary" : "black"
+    let homeColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_HOME ? "secondary" : "black"
+    let listsColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_LISTS ? "secondary" : "black"
+    let usersColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_USERS ? "secondary" : "black"
+    let communityColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_COMMUNITY ? "secondary" : "black"
 
     function handleHome() {
-        store.changeTab(HOME_TAB_TYPE.TAB_HOME)
+        store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME)
     }
 
     function handleLists(){
-        store.changeTab(HOME_TAB_TYPE.TAB_LISTS)
+        store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_LISTS)
     }
 
     function handleUsers(){
-        store.changeTab(HOME_TAB_TYPE.TAB_USERS)
+        store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_USERS)
     }
 
     function handleCommunity(){
-        store.changeTab(HOME_TAB_TYPE.TAB_COMMUNITY)
+        store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_COMMUNITY)
     }
 
     return (

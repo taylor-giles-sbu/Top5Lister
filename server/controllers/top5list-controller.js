@@ -1,6 +1,7 @@
 const Top5List = require('../models/top5list-model');
 const User = require('../models/user-model');
 
+// TG - Updated for final project
 createTop5List = (req, res) => {
     const body = req.body;
     if (!body) {
@@ -8,8 +9,13 @@ createTop5List = (req, res) => {
             errorMessage: 'Improperly formatted request',
         })
     }
+    body.isPublished = false;
+    body.dateUpdated = new Date();
+    body.comments = [];
+    body.userLikes = [];
 
     const top5List = new Top5List(body);
+    console.log(top5List)
     console.log("creating top5List: " + JSON.stringify(top5List));
     if (!top5List) {
         return res.status(400).json({
@@ -141,7 +147,7 @@ getTop5Lists = async (req, res) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!top5Lists.length) {
+        if (!top5Lists) {
             return res
                 .status(404)
                 .json({ success: false, error: `Top 5 Lists not found` })

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
-import { Accordion, AccordionSummary, AccordionDetails, Typography, Grid, List} from '@mui/material'
+import { Accordion, AccordionSummary, AccordionDetails, Button, Typography, Grid, List} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
@@ -21,7 +21,7 @@ function ListCard(props) {
     const { store } = useContext(GlobalStoreContext);
     const [editActive, setEditActive] = useState(false);
     const [text, setText] = useState("");
-    const { idNamePair, selected } = props;
+    const list = props.list;
 
     function handleLoadList(event, id) {
         console.log("handleLoadList for " + id);
@@ -78,15 +78,14 @@ function ListCard(props) {
                 <Grid container pr={2} direction="row" justifyContent="space-around" alignItems="center">
                     <Grid item xs container direction="column" justifyContent="center" alignItems="flex-start">
                         <Typography variant="h5">
-                            {"List name"}
+                            {list.name}
+                        </Typography>
+                        <Typography variant="subtitle1">
+                            {list.owner}
                         </Typography>
                         <Typography variant="caption">
-                            {"Author"}
+                            {"Published on Today"}
                         </Typography>
-                        <Button variant ="text">
-
-                        </Button>
-
                     </Grid>
                     <Grid item xs="auto" container direction="row">
                         <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
@@ -104,7 +103,7 @@ function ListCard(props) {
                                         <ThumbDownIcon/>
                                     </IconButton>
                                     <Typography variant="subtitle2">
-                                        {"10K"}
+                                        {"11K"}
                                     </Typography>
                                 </Grid>
                             </Grid>

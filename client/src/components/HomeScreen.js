@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { GlobalStoreContext } from '../store'
+import { GlobalStoreContext, HOMESCREEN_TAB_TYPE } from '../store'
 import ListCard from './ListCard.js'
 import MUIDeleteModal from './MUIDeleteModal'
 import { Grid } from '@mui/material'
@@ -15,24 +15,24 @@ const HomeScreen = () => {
     const { store } = useContext(GlobalStoreContext);
 
     useEffect(() => {
-        store.loadIdNamePairs();
+        store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME);
     }, []);
 
     function handleCreateNewList() {
         store.createNewList();
     }
-    let listCard = "";
+    let listOfLists = "";
     if (store) {
-        listCard = 
+        console.log(store.lists)
+        let listCards = store.shownLists.map((list)  => (
+                <ListCard
+                    list={list}
+                />
+        ))
+        listOfLists = 
             <List sx={{ width: '90%', left: '5%', bgcolor: 'background.paper' }}>
             {
-                store.idNamePairs.map((pair) => (
-                    <ListCard
-                        key={pair._id}
-                        idNamePair={pair}
-                        selected={false}
-                    />
-                ))
+                listCards
             }
             </List>;
     }
@@ -42,7 +42,7 @@ const HomeScreen = () => {
                 <HomeToolbar/>
             </Grid>
             <Grid item>
-                <ListCard/>
+                {listOfLists}
             </Grid>
         </Grid>
     )

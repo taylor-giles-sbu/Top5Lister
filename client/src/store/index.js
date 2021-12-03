@@ -17,19 +17,16 @@ console.log("create GlobalStoreContext");
 // THESE ARE ALL THE TYPES OF UPDATES TO OUR GLOBAL
 // DATA STORE STATE THAT CAN BE PROCESSED
 export const GlobalStoreActionType = {
-    CHANGE_LIST_NAME: "CHANGE_LIST_NAME",
-    CLOSE_LIST: "CLOSE_LIST",
     CREATE_NEW_LIST: "CREATE_NEW_LIST",
-    LOAD_ID_NAME_PAIRS: "LOAD_ID_NAME_PAIRS",
+    LOAD_LISTS: "LOAD_LISTS",
     MARK_LIST_FOR_DELETION: "MARK_LIST_FOR_DELETION",
     UNMARK_LIST_FOR_DELETION: "UNMARK_LIST_FOR_DELETION",
     SET_CURRENT_TAB: "SET_CURRENT_TAB",
     SET_LIST_TO_EDIT: "SET_LIST_TO_EDIT",
-    SET_LIST_LIKE_STATUS: "SET_LIST_LIKE_STATUS",
-    OPEN_LIST: "OPEN_LIST"
+    SET_LIST_LIKE_STATUS: "SET_LIST_LIKE_STATUS"
 }
 
-export const HOME_TAB_TYPE = {
+export const HOMESCREEN_TAB_TYPE = {
     TAB_HOME: "Home",
     TAB_LISTS: "Lists",
     TAB_USERS: "Users",
@@ -41,9 +38,8 @@ export const HOME_TAB_TYPE = {
 function GlobalStoreContextProvider(props) {
     // THESE ARE ALL THE THINGS OUR DATA STORE WILL MANAGE
     const [store, setStore] = useState({
-        idNamePairs: [],
-        shownIdNamePairs: [],
-        openLists: [],
+        lists: [],
+        shownLists: [],
         currentTab: null,
         newListCounter: 0,
         listToEdit: null,
@@ -62,112 +58,112 @@ function GlobalStoreContextProvider(props) {
     const storeReducer = (action) => {
         const { type, payload } = action;
         switch (type) {
-            // LIST UPDATE OF ITS NAME
-            case GlobalStoreActionType.CHANGE_LIST_NAME: {
-                return setStore({
-                    idNamePairs: payload.idNamePairs,
-                    currentList: payload.top5List,
-                    newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
-                    listMarkedForDeletion: null
-                });
-            }
-            // STOP EDITING THE CURRENT LIST
-            case GlobalStoreActionType.CLOSE_CURRENT_LIST: {
-                return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: null,
-                    newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
-                    listMarkedForDeletion: null
-                })
-            }
+            // // LIST UPDATE OF ITS NAME
+            // case GlobalStoreActionType.CHANGE_LIST_NAME: {
+            //     return setStore({
+            //         idNamePairs: payload.idNamePairs,
+            //         currentList: payload.top5List,
+            //         newListCounter: store.newListCounter,
+            //         isListNameEditActive: false,
+            //         isItemEditActive: false,
+            //         listMarkedForDeletion: null
+            //     });
+            // }
+            // // STOP EDITING THE CURRENT LIST
+            // case GlobalStoreActionType.CLOSE_CURRENT_LIST: {
+            //     return setStore({
+            //         idNamePairs: store.idNamePairs,
+            //         currentList: null,
+            //         newListCounter: store.newListCounter,
+            //         isListNameEditActive: false,
+            //         isItemEditActive: false,
+            //         listMarkedForDeletion: null
+            //     })
+            // }
             // CREATE A NEW LIST
             case GlobalStoreActionType.CREATE_NEW_LIST: {
                 return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: payload,
+                    lists: store.lists,
+                    shownLists: store.shownLists,
+                    currentTab: store.currentTab,
                     newListCounter: store.newListCounter + 1,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
+                    listToEdit: null,
                     listMarkedForDeletion: null
                 })
             }
             // GET ALL THE LISTS SO WE CAN PRESENT THEM
-            case GlobalStoreActionType.LOAD_ID_NAME_PAIRS: {
+            case GlobalStoreActionType.LOAD_LISTS: {
                 return setStore({
-                    idNamePairs: payload,
-                    currentList: null,
+                    lists: payload,
+                    shownLists: payload,
+                    currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
+                    listToEdit: null,
                     listMarkedForDeletion: null
                 });
             }
-            // PREPARE TO DELETE A LIST
+            // // PREPARE TO DELETE A LIST
             case GlobalStoreActionType.MARK_LIST_FOR_DELETION: {
                 return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: null,
+                    lists: store.lists,
+                    shownLists: payload.shownLists,
+                    currentTab: payload.currentTab,
                     newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
+                    listToEdit: null,
                     listMarkedForDeletion: payload
                 });
             }
-            // PREPARE TO DELETE A LIST
+            // Unmark list for deletion
             case GlobalStoreActionType.UNMARK_LIST_FOR_DELETION: {
                 return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: null,
+                    lists: store.lists,
+                    shownLists: payload.shownLists,
+                    currentTab: payload.currentTab,
                     newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
-                    listMarkedForDeletion: null
-                });
-            }
-            // UPDATE A LIST
-            case GlobalStoreActionType.SET_CURRENT_LIST: {
-                return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: payload,
-                    newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: false,
-                    listMarkedForDeletion: null
-                });
-            }
-            // START EDITING A LIST ITEM
-            case GlobalStoreActionType.SET_ITEM_EDIT_ACTIVE: {
-                return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: store.currentList,
-                    newListCounter: store.newListCounter,
-                    isListNameEditActive: false,
-                    isItemEditActive: true,
-                    listMarkedForDeletion: null
-                });
-            }
-            // START EDITING A LIST NAME
-            case GlobalStoreActionType.SET_LIST_NAME_EDIT_ACTIVE: {
-                return setStore({
-                    idNamePairs: store.idNamePairs,
-                    currentList: payload,
-                    newListCounter: store.newListCounter,
-                    isListNameEditActive: true,
-                    isItemEditActive: false,
+                    listToEdit: null,
                     listMarkedForDeletion: null
                 });
             }
 
+            // Set the list to edit
+            case GlobalStoreActionType.SET_LIST_TO_EDIT: {
+                return setStore({
+                    lists: store.lists,
+                    shownLists: store.shownLists,
+                    currentTab: store.currentTab,
+                    newListCounter: store.newListCounter,
+                    listToEdit: payload,
+                    listMarkedForDeletion: null
+                });
+            }
+            // // START EDITING A LIST ITEM
+            // case GlobalStoreActionType.SET_ITEM_EDIT_ACTIVE: {
+            //     return setStore({
+            //         idNamePairs: store.idNamePairs,
+            //         currentList: store.currentList,
+            //         newListCounter: store.newListCounter,
+            //         isListNameEditActive: false,
+            //         isItemEditActive: true,
+            //         listMarkedForDeletion: null
+            //     });
+            // }
+            // // START EDITING A LIST NAME
+            // case GlobalStoreActionType.SET_LIST_NAME_EDIT_ACTIVE: {
+            //     return setStore({
+            //         idNamePairs: store.idNamePairs,
+            //         currentList: payload,
+            //         newListCounter: store.newListCounter,
+            //         isListNameEditActive: true,
+            //         isItemEditActive: false,
+            //         listMarkedForDeletion: null
+            //     });
+            // }
+
             //CHANGE TAB
             case GlobalStoreActionType.SET_CURRENT_TAB: {
                 return setStore({
-                    idNamePairs: payload.idNamePairs,
-                    shownIdNamePairs: payload.shownIdNamePairs,
-                    openLists: [],
+                    lists: payload.lists,
+                    shownLists: payload.shownLists,
                     currentTab: payload.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
@@ -183,76 +179,43 @@ function GlobalStoreContextProvider(props) {
     // DRIVE THE STATE OF THE APPLICATION. WE'LL CALL THESE IN 
     // RESPONSE TO EVENTS INSIDE OUR COMPONENTS.
 
-    // THIS FUNCTION PROCESSES CHANGING A LIST NAME
-    store.changeListName = async function (id, newName) {
-        // let response = await api.getTop5ListById(id);
-        // if (response.status === 200) {
-        //     let top5List = response.data.top5List;
-        //     top5List.name = newName;
-        //     async function updateList(top5List) {
-        //         response = await api.updateTop5ListById(top5List._id, top5List);
-        //         if (response.status === 200) {
-        //             async function getListPairs(top5List) {
-        //                 response = await api.getTop5ListPairs();
-        //                 if (response.status === 200) {
-        //                     let pairsArray = response.data.idNamePairs;
-        //                     storeReducer({
-        //                         type: GlobalStoreActionType.CHANGE_LIST_NAME,
-        //                         payload: {
-        //                             idNamePairs: pairsArray,
-        //                             top5List: top5List
-        //                         }
-        //                     });
-        //                 }
-        //             }
-        //             getListPairs(top5List);
-        //         }
-        //     }
-        //     updateList(top5List);
-        // }
-    }
-
-    // THIS FUNCTION PROCESSES CLOSING THE CURRENTLY LOADED LIST
-    store.closeList = function (id) {
-        
-    }
-
     // THIS FUNCTION CREATES A NEW LIST
     store.createNewList = async function () {
-        // let newListName = "Untitled" + store.newListCounter;
-        // const response = await api.createTop5List(newListName, ["?", "?", "?", "?", "?"], auth.user.email);
-        // console.log("createNewList response: " + response);
-        // if (response.status === 201) {
-        //     tps.clearAllTransactions();
-        //     let newList = response.data.top5List;
-        //     storeReducer({
-        //         type: GlobalStoreActionType.CREATE_NEW_LIST,
-        //         payload: newList
-        //     }
-        //     );
-
-        //     // IF IT'S A VALID LIST THEN LET'S START EDITING IT
-        //     history.push("/top5list/" + newList._id);
-        // }
-        // else {
-        //     console.log("API FAILED TO CREATE A NEW LIST");
-        // }
+        let newListName = "Untitled" + store.newListCounter;
+        const response = await api.createTop5List(newListName, ["?", "?", "?", "?", "?"], auth.user.email);
+        console.log("createNewList response: " + response);
+        if (response.status === 201) {
+            let newList = response.data.top5List;
+            if(newList){
+                storeReducer({
+                    type: GlobalStoreActionType.CREATE_NEW_LIST,
+                    payload: null
+                });
+            }
+        } else {
+            console.log("API FAILED TO CREATE A NEW LIST");
+        }
     }
 
-    // THIS FUNCTION LOADS ALL THE ID, NAME PAIRS SO WE CAN LIST ALL THE LISTS
-    store.loadIdNamePairs = async function () {
-        // console.log("store.loadIdNamePairs");
-        // const response = await api.getTop5ListPairs();
-        // if (response.status === 200) {
-        //     let pairsArray = response.data.idNamePairs;
-        //     storeReducer({
-        //         type: GlobalStoreActionType.LOAD_ID_NAME_PAIRS,
-        //         payload: pairsArray
-        //     });
-        // }
-        // else {
-        //     console.log("API FAILED TO GET THE LIST PAIRS");
-        // }
+    // Don't look at id/name pairs bc theyre useless. Get the whole list for every list
+    store.getLists = async function () {
+        console.log("store.loadLists");
+        const response = await api.getTop5Lists();
+        if (response.status === 200) {
+            let listsArray = response.data.data;
+            console.log(response)
+            return listsArray;
+        }
+        else {
+            console.log("API FAILED TO GET THE LIST PAIRS");
+        }
+    }
+
+    store.loadLists = function(){
+        storeReducer({
+            type: GlobalStoreActionType.LOAD_LISTS,
+            payload: store.getLists()
+        });
     }
 
     // THE FOLLOWING 5 FUNCTIONS ARE FOR COORDINATING THE DELETION
@@ -261,14 +224,14 @@ function GlobalStoreContextProvider(props) {
     // showDeleteListModal, and hideDeleteListModal
     store.markListForDeletion = async function (id) {
         // GET THE LIST
-        // let response = await api.getTop5ListById(id);
-        // if (response.status === 200) {
-        //     let top5List = response.data.top5List;
-        //     storeReducer({
-        //         type: GlobalStoreActionType.MARK_LIST_FOR_DELETION,
-        //         payload: top5List
-        //     });
-        // }
+        let response = await api.getTop5ListById(id);
+        if (response.status === 200) {
+            let top5List = response.data.top5List;
+            storeReducer({
+                type: GlobalStoreActionType.MARK_LIST_FOR_DELETION,
+                payload: top5List
+            });
+        }
     }
 
     store.deleteList = async function (listToDelete) {
@@ -284,44 +247,85 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.unmarkListForDeletion = function () {
-        // storeReducer({
-        //     type: GlobalStoreActionType.UNMARK_LIST_FOR_DELETION,
-        //     payload: null
-        // });
-    }
-
-    store.updateItem = function (index, newItem) {
-        // store.currentList.items[index] = newItem;
-        // store.updateCurrentList();
-    }
-
-    store.updateEditedList = async function () {
-        // const response = await api.updateTop5ListById(store.currentList._id, store.currentList);
-        // if (response.status === 200) {
-        //     storeReducer({
-        //         type: GlobalStoreActionType.SET_CURRENT_LIST,
-        //         payload: store.currentList
-        //     });
-        // }
-    }
-
-    store.openList = async function (id) {
-
-    }
-
-    store.setListToEdit = function () {
-
-    }
-
-    store.changeTab = function (tab) {
         storeReducer({
-            type: GlobalStoreActionType.SET_CURRENT_TAB, 
-            payload: {
-                idNamePairs: [],
-                shownIdNamePairs: [],
-                currentTab: tab
-            }
+            type: GlobalStoreActionType.UNMARK_LIST_FOR_DELETION,
+            payload: null
+        });
+    }
+
+    // Change one of the items in the list being edited
+    store.editListItem = function (index, newItem) {
+        store.listToEdit.items[index] = newItem;
+        store.updateEditedList();
+    }
+
+    // Changes the name of the list currently being edited
+    store.editListName = async function (newName) {
+        store.listToEdit.name = newName;
+        store.updateEditedList();
+    }
+
+    // Sends local changes on edited list to the server
+    store.updateEditedList = async function () {
+        const response = await api.updateTop5ListById(store.listToEdit._id, store.listToEdit);
+        if (response.status === 200) {
+            store.loadLists();
+        }
+    }
+
+    store.getListById = async function(id){
+
+    }
+
+    store.setListToEdit = function (id) {
+        let listToEdit = store.getListById(id);
+        storeReducer({
+            type: GlobalStoreActionType.setListToEdit,
+            payload: listToEdit
         })
+    }
+
+    store.setCurrentTab = async function (tab) {
+        async function setTab(tab, lists){
+            console.log("Lists: " + lists)
+            let newShownLists = []
+            switch (tab) {
+                case HOMESCREEN_TAB_TYPE.TAB_HOME: {
+                    newShownLists = lists.filter(list => list.owner === auth.user.email)
+                    console.log("H")
+                    break;
+                }
+    
+                case HOMESCREEN_TAB_TYPE.TAB_LISTS: {
+                    newShownLists = lists;
+                    console.log("L")
+                    break;
+                }
+    
+                case HOMESCREEN_TAB_TYPE.TAB_USERS: {
+                    newShownLists = lists;
+                    console.log("U")
+                    break;
+                }
+    
+                case HOMESCREEN_TAB_TYPE.TAB_COMMUNITY: {
+                    newShownLists = lists.filter(list => list.owner === null)
+                    console.log("C")
+                    break;
+                }
+            }
+            
+            console.log(newShownLists)
+            storeReducer({
+                type: GlobalStoreActionType.SET_CURRENT_TAB, 
+                payload: {
+                    lists: lists,
+                    shownLists: newShownLists,
+                    currentTab: tab
+                }
+            })
+        }
+        store.getLists().then((lists) => setTab(tab, lists))
     }
 
     store.sortLists = function (sortBy) {
