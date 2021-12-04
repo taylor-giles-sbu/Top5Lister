@@ -23,20 +23,6 @@ function ListCard(props) {
     const [text, setText] = useState("");
     const list = props.list;
 
-    function handleLoadList(event, id) {
-        console.log("handleLoadList for " + id);
-        if (!event.target.disabled) {
-            let _id = event.target.id;
-            if (_id.indexOf('list-card-text-') >= 0)
-                _id = ("" + _id).substring("list-card-text-".length);
-
-            console.log("load " + event.target.id);
-
-            // CHANGE THE CURRENT LIST
-            store.setCurrentList(id);
-        }
-    }
-
     function handleToggleEdit(event) {
         event.stopPropagation();
         toggleEdit();
@@ -72,6 +58,9 @@ function ListCard(props) {
     // TODO Change this according to list publish status
     let backgroundColor ="complement.main"
 
+    let dateObj = new Date(list.dateUpdated)
+    let dateString = String(dateObj.getMonth() + 1) + "/" + String(dateObj.getDate()) + "/" + dateObj.getFullYear();
+
     return (
         <Accordion sx={{ bgcolor: backgroundColor}}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -84,7 +73,7 @@ function ListCard(props) {
                             {list.owner}
                         </Typography>
                         <Typography variant="caption">
-                            {"Published on Today"}
+                            {"Published: " + dateString}
                         </Typography>
                     </Grid>
                     <Grid item xs="auto" container direction="row">
@@ -128,11 +117,11 @@ function ListCard(props) {
                     backgroundColor:"secondary.main"
                     }}>
                     <List sx={{ width: '100%'}}>
-                        <Top5Item/>
-                        <Top5Item/>
-                        <Top5Item/>
-                        <Top5Item/>
-                        <Top5Item/>
+                        <Top5Item index={0} item={list.items[0]}/>
+                        <Top5Item index={1} item={list.items[1]}/>
+                        <Top5Item index={2} item={list.items[2]}/>
+                        <Top5Item index={3} item={list.items[3]}/>
+                        <Top5Item index={4} item={list.items[4]}/>
                     </List>
                 </Box>
             </AccordionDetails>

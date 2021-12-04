@@ -21,15 +21,15 @@ body {
   background-color: var(--swatch-foundation);
 }
 
-/* #root {
+#root {
   background-color: var(--swatch-primary);
   font-family: "Lexend Exa";
   position: absolute;
-  right: 10%;
-  left: 10%;
+  right: 5%;
+  left: 5%;
   height: 100%;
   top: 5%;
-} */
+}
 
 #app-root {
   position: absolute;

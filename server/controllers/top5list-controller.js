@@ -13,6 +13,7 @@ createTop5List = (req, res) => {
     body.dateUpdated = new Date();
     body.comments = [];
     body.userLikes = [];
+    body.views = 0;
 
     const top5List = new Top5List(body);
     console.log(top5List)
@@ -28,22 +29,18 @@ createTop5List = (req, res) => {
     User.findOne({ _id: req.userId }, (err, user) => {
         console.log("user found: " + JSON.stringify(user));
         user.top5Lists.push(top5List._id);
-        user
-            .save()
-            .then(() => {
-                top5List
-                    .save()
-                    .then(() => {
-                        return res.status(201).json({
-                            top5List: top5List
-                        })
-                    })
-                    .catch(error => {
-                        return res.status(400).json({
-                            errorMessage: 'Top 5 List Not Created!'
-                        })
-                    })
-            });
+        user.save().then(() => {
+            top5List.save().then(() => {
+                return res.status(201).json({
+                    top5List: top5List
+                })
+            }).catch(error => {
+                console.log(error)
+                return res.status(400).json({
+                    errorMessage: 'Top 5 List Not Created!'
+                })
+            })
+        });
     })
 }
 deleteTop5List = async (req, res) => {
@@ -59,7 +56,7 @@ deleteTop5List = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            User.findOne({ email: list.ownerEmail }, (err, user) => {
+            User.findOne({ email: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {
@@ -90,7 +87,7 @@ getTop5ListById = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            await User.findOne({ email: list.ownerEmail }, (err, user) => {
+            await User.findOne({ email: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {
@@ -112,7 +109,7 @@ getTop5ListPairs = async (req, res) => {
         console.log("find user with id " + req.userId);
         async function asyncFindList(email) {
             console.log("find all Top5Lists owned by " + email);
-            await Top5List.find({ ownerEmail: email }, (err, top5Lists) => {
+            await Top5List.find({ owner: email }, (err, top5Lists) => {
                 console.log("found Top5Lists: " + JSON.stringify(top5Lists));
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
@@ -178,7 +175,7 @@ updateTop5List = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            await User.findOne({ email: list.ownerEmail }, (err, user) => {
+            await User.findOne({ email: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {

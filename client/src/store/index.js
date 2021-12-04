@@ -51,7 +51,6 @@ function GlobalStoreContextProvider(props) {
 
     // SINCE WE'VE WRAPPED THE STORE IN THE AUTH CONTEXT WE CAN ACCESS THE USER HERE
     const { auth } = useContext(AuthContext);
-    console.log("auth: " + auth);
 
     // HERE'S THE DATA STORE'S REDUCER, IT MUST
     // HANDLE EVERY TYPE OF STATE CHANGE
@@ -61,11 +60,11 @@ function GlobalStoreContextProvider(props) {
             // CREATE A NEW LIST
             case GlobalStoreActionType.CREATE_NEW_LIST: {
                 return setStore({
-                    lists: store.lists,
+                    lists: payload.lists,
                     shownLists: store.shownLists,
                     currentTab: store.currentTab,
                     newListCounter: store.newListCounter + 1,
-                    listToEdit: null,
+                    listToEdit: payload.listToEdit,
                     listMarkedForDeletion: null
                 })
             }
@@ -142,9 +141,19 @@ function GlobalStoreContextProvider(props) {
         if (response.status === 201) {
             let newList = response.data.top5List;
             if(newList){
-                storeReducer({
-                    type: GlobalStoreActionType.CREATE_NEW_LIST,
-                    payload: null
+                async function callReducer(lists, newList){
+                    storeReducer({
+                        type: GlobalStoreActionType.CREATE_NEW_LIST,
+                        payload: {
+                            lists: lists,
+                            listToEdit: newList
+                        }
+                    })
+                }
+                store.getLists().then((lists) => {
+                    console.log("reducerlists")
+                    console.log(lists)
+                    callReducer(lists, newList)
                 });
             }
         } else {
@@ -160,16 +169,19 @@ function GlobalStoreContextProvider(props) {
             let listsArray = response.data.data;
             console.log(response)
             return listsArray;
-        }
-        else {
-            console.log("API FAILED TO GET THE LIST PAIRS");
+        } else {
+            console.log("API FAILED TO GET THE LISTS");
         }
     }
 
     store.loadLists = function(){
-        storeReducer({
-            type: GlobalStoreActionType.LOAD_LISTS,
-            payload: store.getLists()
+        store.getLists().then((lists) => {
+            console.log("lists:")
+            console.log(lists)
+            storeReducer({
+                type: GlobalStoreActionType.LOAD_LISTS,
+                payload: lists
+            })
         });
     }
 
@@ -230,7 +242,7 @@ function GlobalStoreContextProvider(props) {
     store.updateEditedList = async function () {
         const response = await api.updateTop5ListById(store.listToEdit._id, store.listToEdit);
         if (response.status === 200) {
-            store.loadLists();
+            store.loadLists(); //This clears the listToEdit
         }
     }
 
