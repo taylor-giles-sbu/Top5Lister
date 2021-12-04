@@ -21,15 +21,15 @@ body {
   background-color: var(--swatch-foundation);
 }
 
-#root {
+/* #root {
   background-color: var(--swatch-primary);
   font-family: "Lexend Exa";
   position: absolute;
-  width: 80%;
+  right: 10%;
   left: 10%;
-  height: 90%;
+  height: 100%;
   top: 5%;
-}
+} */
 
 #app-root {
   position: absolute;
@@ -63,8 +63,7 @@ body {
   border-style: solid;
   border-radius: 10px;
   padding-top: 5%;
-  padding-bottom: 5%;
-  height:70%;
+  height:90%;
   text-align: center;
   vertical-align: center;
 }

@@ -2,8 +2,9 @@ import React, { useContext, useEffect } from 'react'
 import { GlobalStoreContext, HOMESCREEN_TAB_TYPE } from '../store'
 import ListCard from './ListCard.js'
 import MUIDeleteModal from './MUIDeleteModal'
-import { Grid } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import HomeToolbar from './HomeToolbar'
+import ListViewScreen from './ListViewScreen'
 import List from '@mui/material/List';
 
 /*
@@ -30,21 +31,35 @@ const HomeScreen = () => {
                 />
         ))
         listOfLists = 
-            <List sx={{ width: '90%', left: '5%', bgcolor: 'background.paper' }}>
+            <List sx={{ width: '90%', left: '5%', bgcolor: 'transparent' }}>
             {
                 listCards
             }
             </List>;
     }
     return (
-        <Grid container direction="column">
-            <Grid item>
-                <HomeToolbar/>
-            </Grid>
-            <Grid item>
-                {listOfLists}
-            </Grid>
-        </Grid>
+        <Box   
+            sx={{
+            bgcolor: "primary.light",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+        }}>
+            <HomeToolbar />
+            <ListViewScreen />
+            <Button>
+                Hello
+            </Button>
+            {/* <Grid container direction="column" justifyContent="space-between">
+                <Grid item xs={2}>
+                    <HomeToolbar/>
+                </Grid>
+                <Grid item xs={10}>
+                    <ListViewScreen />
+                </Grid>
+            </Grid> */}
+        </Box>
+        
     )
 }
 

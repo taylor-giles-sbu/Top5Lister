@@ -58,28 +58,6 @@ function GlobalStoreContextProvider(props) {
     const storeReducer = (action) => {
         const { type, payload } = action;
         switch (type) {
-            // // LIST UPDATE OF ITS NAME
-            // case GlobalStoreActionType.CHANGE_LIST_NAME: {
-            //     return setStore({
-            //         idNamePairs: payload.idNamePairs,
-            //         currentList: payload.top5List,
-            //         newListCounter: store.newListCounter,
-            //         isListNameEditActive: false,
-            //         isItemEditActive: false,
-            //         listMarkedForDeletion: null
-            //     });
-            // }
-            // // STOP EDITING THE CURRENT LIST
-            // case GlobalStoreActionType.CLOSE_CURRENT_LIST: {
-            //     return setStore({
-            //         idNamePairs: store.idNamePairs,
-            //         currentList: null,
-            //         newListCounter: store.newListCounter,
-            //         isListNameEditActive: false,
-            //         isItemEditActive: false,
-            //         listMarkedForDeletion: null
-            //     })
-            // }
             // CREATE A NEW LIST
             case GlobalStoreActionType.CREATE_NEW_LIST: {
                 return setStore({
@@ -136,29 +114,6 @@ function GlobalStoreContextProvider(props) {
                     listMarkedForDeletion: null
                 });
             }
-            // // START EDITING A LIST ITEM
-            // case GlobalStoreActionType.SET_ITEM_EDIT_ACTIVE: {
-            //     return setStore({
-            //         idNamePairs: store.idNamePairs,
-            //         currentList: store.currentList,
-            //         newListCounter: store.newListCounter,
-            //         isListNameEditActive: false,
-            //         isItemEditActive: true,
-            //         listMarkedForDeletion: null
-            //     });
-            // }
-            // // START EDITING A LIST NAME
-            // case GlobalStoreActionType.SET_LIST_NAME_EDIT_ACTIVE: {
-            //     return setStore({
-            //         idNamePairs: store.idNamePairs,
-            //         currentList: payload,
-            //         newListCounter: store.newListCounter,
-            //         isListNameEditActive: true,
-            //         isItemEditActive: false,
-            //         listMarkedForDeletion: null
-            //     });
-            // }
-
             //CHANGE TAB
             case GlobalStoreActionType.SET_CURRENT_TAB: {
                 return setStore({
@@ -256,13 +211,19 @@ function GlobalStoreContextProvider(props) {
     // Change one of the items in the list being edited
     store.editListItem = function (index, newItem) {
         store.listToEdit.items[index] = newItem;
-        store.updateEditedList();
+        storeReducer({
+            type: GlobalStoreActionType.SET_LIST_TO_EDIT,
+            payload: store.listToEdit
+        })
     }
 
     // Changes the name of the list currently being edited
     store.editListName = async function (newName) {
         store.listToEdit.name = newName;
-        store.updateEditedList();
+        storeReducer({
+            type: GlobalStoreActionType.SET_LIST_TO_EDIT,
+            payload: store.listToEdit
+        })
     }
 
     // Sends local changes on edited list to the server
@@ -280,42 +241,36 @@ function GlobalStoreContextProvider(props) {
     store.setListToEdit = function (id) {
         let listToEdit = store.getListById(id);
         storeReducer({
-            type: GlobalStoreActionType.setListToEdit,
+            type: GlobalStoreActionType.SET_LIST_TO_EDIT,
             payload: listToEdit
         })
     }
 
     store.setCurrentTab = async function (tab) {
         async function setTab(tab, lists){
-            console.log("Lists: " + lists)
             let newShownLists = []
             switch (tab) {
                 case HOMESCREEN_TAB_TYPE.TAB_HOME: {
                     newShownLists = lists.filter(list => list.owner === auth.user.email)
-                    console.log("H")
                     break;
                 }
     
                 case HOMESCREEN_TAB_TYPE.TAB_LISTS: {
                     newShownLists = lists;
-                    console.log("L")
                     break;
                 }
     
                 case HOMESCREEN_TAB_TYPE.TAB_USERS: {
                     newShownLists = lists;
-                    console.log("U")
                     break;
                 }
     
                 case HOMESCREEN_TAB_TYPE.TAB_COMMUNITY: {
                     newShownLists = lists.filter(list => list.owner === null)
-                    console.log("C")
                     break;
                 }
             }
             
-            console.log(newShownLists)
             storeReducer({
                 type: GlobalStoreActionType.SET_CURRENT_TAB, 
                 payload: {

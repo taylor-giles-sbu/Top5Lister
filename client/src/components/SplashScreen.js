@@ -28,7 +28,7 @@ export default function SplashScreen() {
                         <Button 
                             id="btn_create_account" 
                             variant="contained"
-                            color="accent"
+                            color="primary"
                             href="/register/"
                         >
                             Create an Account
@@ -39,7 +39,7 @@ export default function SplashScreen() {
                             href="/login/" 
                             color="accent" 
                             id="btn_login" 
-                            variant="outlined"
+                            variant="contained"
                         >
                             Log In 
                         </Button>
