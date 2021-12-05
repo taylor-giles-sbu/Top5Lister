@@ -190,7 +190,7 @@ function GlobalStoreContextProvider(props) {
     // FUNCTIONS ARE markListForDeletion, deleteList, deleteMarkedList,
     // showDeleteListModal, and hideDeleteListModal
     store.markListForDeletion = async function (id) {
-        // GET THE LIST
+        // GET THE LIST (enforced by ownership)
         let response = await api.getTop5ListById(id);
         if (response.status === 200) {
             let top5List = response.data.top5List;
@@ -242,18 +242,15 @@ function GlobalStoreContextProvider(props) {
     store.updateEditedList = async function () {
         const response = await api.updateTop5ListById(store.listToEdit._id, store.listToEdit);
         if (response.status === 200) {
-            store.loadLists(); //This clears the listToEdit
+            store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME); //This clears the listToEdit
         }
     }
 
     store.publishEditedList = async function() {
         const response = await api.publishTop5ListById(store.listToEdit._id);
         if (response.status === 200){
-            store.loadLists(); //This clears the listToEdit
+            store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME); //This clears the listToEdit
         }
-    }
-
-    store.getListById = async function(id){
     }
 
     store.setListToEdit = function (list) {
@@ -312,7 +309,7 @@ function GlobalStoreContextProvider(props) {
 
     }
 
-    store.filterForCommunity = function () {
+    store.filterForCommunity = function (name) {
 
     }
 
@@ -339,13 +336,15 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.isListDisliked = function(list){
-        console.log("user")
-        console.log(auth.user._id)
         let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.email))
         if(index < 0) { 
             return false
         }
         return !list.userLikes[index].liked;
+    }
+
+    store.isListOwnedByMe = function(list){
+        return list.owner === auth.user.email
     }
 
 

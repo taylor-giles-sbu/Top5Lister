@@ -140,16 +140,25 @@ getTop5ListPairs = async (req, res) => {
     }).catch(err => console.log(err))
 }
 getTop5Lists = async (req, res) => {
-    await Top5List.find({}, (err, top5Lists) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
+    await User.findOne({ _id: req.userId }, (err, user) => {
+        console.log("find user with id " + req.userId);
+        async function asyncFindList(email) {
+            console.log("find all Top5Lists owned by " + email + " or published");
+            await Top5List.find({$or:[{owner: email},{isPublished:true}]}, (err, top5Lists) => {
+                console.log("found Top5Lists: " + JSON.stringify(top5Lists));
+                if (err) {
+                    return res.status(400).json({ success: false, error: err })
+                }
+                if (!top5Lists) {
+                    console.log("!top5Lists.length");
+                    return res
+                        .status(404)
+                        .json({ success: false, error: 'Top 5 Lists not found' })
+                }
+                return res.status(200).json({ success: true, data: top5Lists })
+            }).catch(err => console.log(err))
         }
-        if (!top5Lists) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Top 5 Lists not found` })
-        }
-        return res.status(200).json({ success: true, data: top5Lists })
+        asyncFindList(user.email);
     }).catch(err => console.log(err))
 }
 updateTop5List = async (req, res) => {
@@ -184,23 +193,20 @@ updateTop5List = async (req, res) => {
 
                     list.name = body.top5List.name;
                     list.items = body.top5List.items;
-                    list
-                        .save()
-                        .then(() => {
-                            console.log("SUCCESS!!!");
-                            return res.status(200).json({
-                                success: true,
-                                id: list._id,
-                                message: 'Top 5 List updated!',
-                            })
+                    list.save().then(() => {
+                        console.log("SUCCESS!!!");
+                        return res.status(200).json({
+                            success: true,
+                            id: list._id,
+                            message: 'Top 5 List updated!',
                         })
-                        .catch(error => {
-                            console.log("FAILURE: " + JSON.stringify(error));
-                            return res.status(404).json({
-                                error,
-                                message: 'Top 5 List not updated!',
-                            })
+                    }).catch(error => {
+                        console.log("FAILURE: " + JSON.stringify(error));
+                        return res.status(404).json({
+                            error,
+                            message: 'Top 5 List not updated!',
                         })
+                    })
                 }
                 else {
                     console.log("incorrect user!");

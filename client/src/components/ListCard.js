@@ -60,6 +60,12 @@ function ListCard(props) {
 
     let publish = (list.isPublished) 
         ? (<Typography variant="caption"> {"Published: " + dateString} </Typography>)
+        : (<Typography variant="caption" color="red"> {"Not Published"} </Typography>)
+
+    let deleteButton = (store.isListOwnedByMe(list))
+        ? <IconButton onClick={handleDeleteList} size="large">
+            <DeleteIcon fontSize="large"/>
+        </IconButton>
         : ""
 
     let likesAndViewsOrEdit = (list.isPublished)
@@ -106,9 +112,7 @@ function ListCard(props) {
                     <Grid item xs="auto" container direction="row">
                         {likesAndViewsOrEdit}
                         <Grid item xs="auto">
-                            <IconButton onClick={handleDeleteList} size="large">
-                                <DeleteIcon fontSize="large"/>
-                            </IconButton>
+                            { deleteButton }
                         </Grid>
                     </Grid>
                 </Grid>
