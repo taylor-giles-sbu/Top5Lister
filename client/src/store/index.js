@@ -400,6 +400,13 @@ function GlobalStoreContextProvider(props) {
         return list.userLikes.reduce((numDislikes, item) => { return (item.liked) ? numDislikes : numDislikes + 1 }, 0);
     }
 
+    store.viewList = async function(id){
+        const response = await api.viewTop5List(id);
+        if (response.status === 200) {
+            store.updateView(store.currentTab, store.sortType);  
+        }
+    }
+
 
 
     return (

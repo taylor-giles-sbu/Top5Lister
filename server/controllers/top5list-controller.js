@@ -260,8 +260,6 @@ likeTop5List = async (req, res) => {
     })
 }
 dislikeTop5List = async (req, res) => {
-    console.log("likeTop5List");
-    
     Top5List.findOne({ _id: req.params.id }, (err, top5List) => {
         console.log("top5List found: " + JSON.stringify(top5List));
         if (err) {
@@ -303,9 +301,6 @@ dislikeTop5List = async (req, res) => {
 }
 publishTop5List = async (req, res) => {
     const body = req.body
-    console.log("updateTop5List: " + JSON.stringify(body));
-    console.log("req.body.name, req.body.items: " + req.body.name + ", " + req.body.items);
-
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -358,6 +353,36 @@ publishTop5List = async (req, res) => {
     })
 }
 
+viewTop5List = async (req, res) => {
+    Top5List.findOne({ _id: req.params.id }, (err, top5List) => {
+        console.log("top5List found: " + JSON.stringify(top5List));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Top 5 List not found!',
+            })
+        }
+        if(top5List.isPublished){
+            top5List.views = top5List.views + 1;
+            top5List.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: top5List._id,
+                    message: 'Top 5 List updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'Top 5 List not updated!',
+                })
+            })
+        }
+    })
+}
+
+
 module.exports = {
     createTop5List,
     deleteTop5List,
@@ -367,5 +392,6 @@ module.exports = {
     updateTop5List,
     likeTop5List,
     dislikeTop5List,
-    publishTop5List
+    publishTop5List,
+    viewTop5List
 }

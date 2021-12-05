@@ -73,12 +73,12 @@ export default function HomeToolbar() {
                 </Button>
             </MenuItem>
             <MenuItem onClick={handleMenuClose}>
-                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DATE_NEWEST)}}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DATE_OLDEST)}}>
                     {'Publish Date (Oldest)'}
                 </Button>
             </MenuItem>
             <MenuItem onClick={handleMenuClose}>
-                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DATE_NEWEST)}}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_VIEWS)}}>
                     {'Views'}
                 </Button>
             </MenuItem>

@@ -96,8 +96,14 @@ function ListCard(props) {
         </Grid>
         : (<Button variant="text" color="black" onClick={handleEdit}> Edit </Button>)
 
+    let handleAccordionChange = (event, newExpanded) => {
+        if(newExpanded){
+            store.viewList(list._id)
+        }
+    }
+
     return (
-        <Accordion sx={{ bgcolor: backgroundColor}}>
+        <Accordion sx={{ bgcolor: backgroundColor}} onChange={handleAccordionChange}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <Grid container pr={2} direction="row" justifyContent="space-around" alignItems="center">
                     <Grid item xs container direction="column" justifyContent="center" alignItems="flex-start">
