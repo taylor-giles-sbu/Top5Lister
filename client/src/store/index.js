@@ -311,17 +311,39 @@ function GlobalStoreContextProvider(props) {
 
     }
 
-    store.likeList = function (id) {
-
+    store.likeList = async function (id) {
+        const response = await api.likeTop5List(id);
+        if (response.status === 200) {
+            store.loadLists(); 
+        }
     }
 
-    store.dislikeList = function (id) {
-
+    store.dislikeList = async function (id) {
+        const response = await api.dislikeTop5List(id);
+        if (response.status === 200) {
+            store.loadLists(); 
+        }
     }
 
-    store.unlikeList = function (id) {
-
+    store.isListLiked = function(list){
+        let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.email))
+        if(index < 0) { 
+            return false
+        }
+        return list.userLikes[index].liked;
     }
+
+    store.isListDisliked = function(list){
+        console.log("user")
+        console.log(auth.user._id)
+        let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.email))
+        if(index < 0) { 
+            return false
+        }
+        return !list.userLikes[index].liked;
+    }
+
+
 
     return (
         <GlobalStoreContext.Provider value={{

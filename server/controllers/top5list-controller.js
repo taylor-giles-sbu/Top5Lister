@@ -211,6 +211,90 @@ updateTop5List = async (req, res) => {
         asyncFindUser(top5List);
     })
 }
+likeTop5List = async (req, res) => {
+    console.log("likeTop5List");
+    
+    Top5List.findOne({ _id: req.params.id }, (err, top5List) => {
+        console.log("top5List found: " + JSON.stringify(top5List));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Top 5 List not found!',
+            })
+        }
+
+        User.findOne({ _id: req.userId }, (err, user) => {
+            console.log("user found: " + JSON.stringify(user));
+            console.log("req.userId: " + req.userId);
+            let index = top5List.userLikes.findIndex((element) =>  (element.user === user.email))
+            if(index >= 0){
+                if(top5List.userLikes[index].liked === true){
+                    top5List.userLikes.splice(index, 1);
+                } else {
+                    top5List.userLikes[index].liked = true;
+                }
+            } else {
+                top5List.userLikes.push({user: user.email, liked: true})
+            }
+            top5List.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: top5List._id,
+                    message: 'Top 5 List updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'Top 5 List not updated!',
+                })
+            })
+        })
+    })
+}
+dislikeTop5List = async (req, res) => {
+    console.log("likeTop5List");
+    
+    Top5List.findOne({ _id: req.params.id }, (err, top5List) => {
+        console.log("top5List found: " + JSON.stringify(top5List));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Top 5 List not found!',
+            })
+        }
+
+        User.findOne({ _id: req.userId }, (err, user) => {
+            console.log("user found: " + JSON.stringify(user));
+            console.log("req.userId: " + req.userId);
+            let index = top5List.userLikes.findIndex((element) =>  (element.user === user.email))
+            if(index >= 0){
+                if(top5List.userLikes[index].liked === false){
+                    top5List.userLikes.splice(index, 1);
+                } else {
+                    top5List.userLikes[index].liked = false;
+                }
+            } else {
+                top5List.userLikes.push({user: user.email, liked: false})
+            }
+            top5List.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: top5List._id,
+                    message: 'Top 5 List updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'Top 5 List not updated!',
+                })
+            })
+        })
+    })
+}
 
 module.exports = {
     createTop5List,
@@ -218,5 +302,7 @@ module.exports = {
     getTop5ListById,
     getTop5ListPairs,
     getTop5Lists,
-    updateTop5List
+    updateTop5List,
+    likeTop5List,
+    dislikeTop5List
 }

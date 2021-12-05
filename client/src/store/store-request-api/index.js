@@ -40,12 +40,18 @@ export const updateTop5ListById = (id, top5List) => {
     })
 }
 
+//Liking and disliking - note that unliking is handled on the server side
+export const likeTop5List = (id) => api.put(`/liketop5list/${id}`)
+export const dislikeTop5List = (id) => api.put(`/disliketop5list/${id}`)
+
 const apis = {
     createTop5List,
     deleteTop5ListById,
     getTop5ListById,
     getTop5Lists,
-    updateTop5ListById
+    updateTop5ListById,
+    likeTop5List,
+    dislikeTop5List
 }
 
 export default apis

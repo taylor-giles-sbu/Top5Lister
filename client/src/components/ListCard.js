@@ -43,11 +43,27 @@ function ListCard(props) {
         store.markListForDeletion(list._id)
     }
 
+    async function handleLikeList(event){
+        event.stopPropagation();
+        store.likeList(list._id);
+    }
+
+    async function handleDislikeList(event){
+        event.stopPropagation();
+        store.dislikeList(list._id)
+    }
+
     // TODO Change this according to list publish status
     let backgroundColor ="complement.main"
 
     let dateObj = new Date(list.dateUpdated)
     let dateString = String(dateObj.getMonth() + 1) + "/" + String(dateObj.getDate()) + "/" + dateObj.getFullYear();
+
+    let likes = list.userLikes.reduce((numLikes, item) => { return (item.liked) ? numLikes+1 : numLikes }, 0);
+    let dislikes = list.userLikes.reduce((numDislikes, item) => { return (item.liked) ? numDislikes : numDislikes + 1 }, 0);
+
+    let likeColor = (store.isListLiked(list)) ? "secondary" : "action"
+    let dislikeColor = (store.isListDisliked(list)) ? "secondary" : "action"
 
     return (
         <Accordion sx={{ bgcolor: backgroundColor}}>
@@ -68,25 +84,25 @@ function ListCard(props) {
                         <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
                             <Grid item container justifyContent="center" direction="row">
                                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                                    <IconButton size="small">
-                                        <ThumbUpIcon/>
+                                    <IconButton size="small" onClick={handleLikeList}>
+                                        <ThumbUpIcon color={likeColor}/>
                                     </IconButton>
                                     <Typography variant="subtitle2">
-                                        {"5K"}
+                                        {likes}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                                    <IconButton size="small">
-                                        <ThumbDownIcon/>
+                                    <IconButton size="small" onClick={handleDislikeList}>
+                                        <ThumbDownIcon color={dislikeColor}/>
                                     </IconButton>
                                     <Typography variant="subtitle2">
-                                        {"11K"}
+                                        {dislikes}
                                     </Typography>
                                 </Grid>
                             </Grid>
                             <Grid item >
                                 <Typography variant="caption">
-                                    {"100000 Views"}
+                                    {list.views + " Views"}
                                 </Typography>
                             </Grid>
                         </Grid>
