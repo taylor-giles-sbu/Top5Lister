@@ -83,8 +83,8 @@ function GlobalStoreContextProvider(props) {
             case GlobalStoreActionType.MARK_LIST_FOR_DELETION: {
                 return setStore({
                     lists: store.lists,
-                    shownLists: payload.shownLists,
-                    currentTab: payload.currentTab,
+                    shownLists: store.shownLists,
+                    currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: payload
@@ -94,8 +94,8 @@ function GlobalStoreContextProvider(props) {
             case GlobalStoreActionType.UNMARK_LIST_FOR_DELETION: {
                 return setStore({
                     lists: store.lists,
-                    shownLists: payload.shownLists,
-                    currentTab: payload.currentTab,
+                    shownLists: store.shownLists,
+                    currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: null
@@ -202,15 +202,15 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.deleteList = async function (listToDelete) {
-        // let response = await api.deleteTop5ListById(listToDelete._id);
-        // if (response.status === 200) {
-        //     store.loadIdNamePairs();
-        //     history.push("/");
-        // }
+        let response = await api.deleteTop5ListById(listToDelete._id);
+        if (response.status === 200) {
+            store.loadLists();
+            history.push("/");
+        }
     }
 
     store.deleteMarkedList = function () {
-        // store.deleteList(store.listMarkedForDeletion);
+        store.deleteList(store.listMarkedForDeletion);
     }
 
     store.unmarkListForDeletion = function () {

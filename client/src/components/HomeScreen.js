@@ -82,6 +82,7 @@ const HomeScreen = () => {
             <Grid container justifyContent="center" alignItems="center">
                 {footer}
             </Grid>
+            <MUIDeleteModal/>
 
             {/* <Grid container direction="column" justifyContent="space-between">
                 <Grid item xs={2}>
@@ -92,6 +93,7 @@ const HomeScreen = () => {
                 </Grid>
             </Grid> */}
         </Box>
+        
         
     )
 }

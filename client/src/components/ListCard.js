@@ -36,23 +36,11 @@ function ListCard(props) {
         setEditActive(newActive);
     }
 
-    async function handleDeleteList(event, id) {
+    async function handleDeleteList(event) {
         event.stopPropagation();
-        console.log("its supposed to stop")
-        // let _id = event.target.id;
-        // _id = ("" + _id).substring("delete-list-".length);
-        // store.markListForDeletion(id);
-    }
-
-    function handleKeyPress(event) {
-        if (event.code === "Enter") {
-            let id = event.target.id.substring("list-".length);
-            store.changeListName(id, text);
-            toggleEdit();
-        }
-    }
-    function handleUpdateText(event) {
-        setText(event.target.value);
+        console.log("list to delete: ")
+        console.log(list)
+        store.markListForDeletion(list._id)
     }
 
     // TODO Change this according to list publish status
