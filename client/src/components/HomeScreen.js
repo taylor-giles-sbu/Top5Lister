@@ -48,22 +48,24 @@ const HomeScreen = () => {
             startIcon={<AddIcon/>}
             disabled={store.listToEdit!==null}
             onClick={handleCreateNewList}>
-                Your Lists
+                Your {store.searchObj.param} Lists
             </Button>
             break;
         case HOMESCREEN_TAB_TYPE.TAB_LISTS: 
+            let listsText = (store.searchObj.param.length > 0) ? store.searchObj.param : "All"
             footer = <Typography variant="h5" p={2}>
-                All Lists
+                {listsText} Lists
             </Typography>
             break;
         case HOMESCREEN_TAB_TYPE.TAB_USERS:
+            let usersText = (store.searchObj.param.length > 0) ? store.searchObj.param : "All Users"
             footer = <Typography variant="h5" p={2}>
-                All Lists
+                {usersText}'s Lists
             </Typography>
             break;
         case HOMESCREEN_TAB_TYPE.TAB_COMMUNITY:
             footer = <Typography variant="h5" p={2}>
-                Community Lists
+                {store.searchObj.param} Community Lists
             </Typography>
             break;
     }

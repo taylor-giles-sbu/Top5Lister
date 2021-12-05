@@ -45,6 +45,11 @@ export const SORT_TYPE = {
 // WITH THIS WE'RE MAKING OUR GLOBAL DATA STORE
 // AVAILABLE TO THE REST OF THE APPLICATION
 function GlobalStoreContextProvider(props) {
+    const defaultSearchObj = {
+        function: () => {return true},
+        param: ""
+    }
+
     // THESE ARE ALL THE THINGS OUR DATA STORE WILL MANAGE
     const [store, setStore] = useState({
         lists: [],
@@ -53,7 +58,8 @@ function GlobalStoreContextProvider(props) {
         newListCounter: 0,
         listToEdit: null,
         listMarkedForDeletion: null,
-        sortType: SORT_TYPE.SORT_DATE_NEWEST
+        sortType: SORT_TYPE.SORT_DATE_NEWEST,
+        searchObj: defaultSearchObj
     });
     const history = useHistory();
 
@@ -76,7 +82,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter + 1,
                     listToEdit: payload.listToEdit,
                     listMarkedForDeletion: null,
-                    sortType: store.sortType
+                    sortType: store.sortType,
+                    searchObj: store.searchObj
                 })
             }
             // GET ALL THE LISTS SO WE CAN PRESENT THEM
@@ -88,7 +95,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: null,
-                    sortType: store.sortType
+                    sortType: store.sortType,
+                    searchObj: store.searchObj
                 });
             }
             // // PREPARE TO DELETE A LIST
@@ -100,7 +108,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: payload,
-                    sortType: store.sortType
+                    sortType: store.sortType,
+                    searchObj: store.searchObj
                 });
             }
             // Unmark list for deletion
@@ -112,7 +121,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: null,
-                    sortType: store.sortType
+                    sortType: store.sortType,
+                    searchObj: store.searchObj
                 });
             }
 
@@ -125,7 +135,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listToEdit: payload,
                     listMarkedForDeletion: null,
-                    sortType: store.sortType
+                    sortType: store.sortType,
+                    searchObj: store.searchObj
                 });
             }
             //CHANGE TAB
@@ -137,7 +148,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: null,
-                    sortType: store.sortType
+                    sortType: store.sortType,
+                    searchObj: store.searchObj
                 })
             }
 
@@ -149,7 +161,8 @@ function GlobalStoreContextProvider(props) {
                     newListCounter: store.newListCounter,
                     listToEdit: null,
                     listMarkedForDeletion: null,
-                    sortType: payload.sortType
+                    sortType: payload.sortType,
+                    searchObj: payload.searchObj
                 })
             }
             default:
@@ -232,7 +245,7 @@ function GlobalStoreContextProvider(props) {
     store.deleteList = async function (listToDelete) {
         let response = await api.deleteTop5ListById(listToDelete._id);
         if (response.status === 200) {
-            store.updateView(store.currentTab, store.sortType);
+            store.updateView(store.currentTab, store.sortType, store.searchObj);
             history.push("/");
         }
     }
@@ -289,12 +302,12 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.setCurrentTab = async function (tab) {
-        store.updateView(tab, SORT_TYPE.SORT_DATE_NEWEST)
+        store.updateView(tab, SORT_TYPE.SORT_DATE_NEWEST, defaultSearchObj)
     }
 
     // Updates the page with fresh lists from the server
-    store.updateView = async function (tab, sortType) {
-        async function setTabAndSort(tab, sortType, lists){
+    store.updateView = async function (tab, sortType, searchObj) {
+        async function setTabAndSort(tab, sortType, searchObj, lists){
             let newShownLists = []
             switch (tab) {
                 case HOMESCREEN_TAB_TYPE.TAB_HOME: {
@@ -318,6 +331,7 @@ function GlobalStoreContextProvider(props) {
                 }
             }
             newShownLists.sort(store.getSortFunction(sortType))
+            newShownLists = newShownLists.filter(searchObj.function)
             
             storeReducer({
                 type: GlobalStoreActionType.UPDATE_VIEW, 
@@ -325,15 +339,16 @@ function GlobalStoreContextProvider(props) {
                     lists: lists,
                     shownLists: newShownLists,
                     currentTab: tab,
-                    sortType: sortType
+                    sortType: sortType,
+                    searchObj: searchObj
                 }
             })
         }
-        store.getLists().then((lists) => setTabAndSort(tab, sortType, lists))
+        store.getLists().then((lists) => setTabAndSort(tab, sortType, searchObj, lists))
     }
 
     store.sortBy = function (sortType) {
-        store.updateView(store.currentTab, sortType)
+        store.updateView(store.currentTab, sortType, store.searchObj)
     }
 
     store.getSortFunction = function(sortType){
@@ -346,29 +361,41 @@ function GlobalStoreContextProvider(props) {
         }
     }
 
-    store.filterByName = function (name) {
+    store.searchLists = function(searchParam){
+        if(store.currentTab === HOMESCREEN_TAB_TYPE.TAB_USERS){
+            store.filterByUser(searchParam)
+        } else {
+            store.filterByName(searchParam)
+        }
+    }
 
+    store.filterByName = function (name) {
+        store.updateView(store.currentTab, store.sortType, {function: ((list) => {return list.name.startsWith(name)}), param: name})
     }
 
     store.filterByUser = function (user) {
-
+        store.updateView(store.currentTab, store.sortType, {function: ((list) => {return list.owner === user}), param: user})
     }
 
     store.filterForCommunity = function (name) {
 
     }
 
+    store.clearFilter = function(){
+        store.updateView(store.currentTab, store.sortType, defaultSearchObj);
+    }
+
     store.likeList = async function (id) {
         const response = await api.likeTop5List(id);
         if (response.status === 200) {
-            store.updateView(store.currentTab, store.sortType); 
+            store.updateView(store.currentTab, store.sortType, store.searchObj); 
         }
     }
 
     store.dislikeList = async function (id) {
         const response = await api.dislikeTop5List(id);
         if (response.status === 200) {
-            store.updateView(store.currentTab, store.sortType);  
+            store.updateView(store.currentTab, store.sortType, store.searchObj);  
         }
     }
 
@@ -403,7 +430,7 @@ function GlobalStoreContextProvider(props) {
     store.viewList = async function(id){
         const response = await api.viewTop5List(id);
         if (response.status === 200) {
-            store.updateView(store.currentTab, store.sortType);  
+            store.updateView(store.currentTab, store.sortType, store.searchObj);  
         }
     }
 

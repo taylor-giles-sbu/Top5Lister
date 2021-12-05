@@ -12,6 +12,7 @@ export default function HomeToolbar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [ searchText, setSearchText ] = useState(store.searchObj.param);
     const isMenuOpen = Boolean(anchorEl);
 
     let homeColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_HOME ? "selection" : "black"
@@ -50,6 +51,16 @@ export default function HomeToolbar() {
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
+
+    const handleSearch = (event) => {
+        if(event.keyCode == 13){
+            store.searchLists(event.target.value)
+         }
+    }
+
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value)
+    }
 
     const sortMenu = (
         <Menu
@@ -126,7 +137,10 @@ export default function HomeToolbar() {
                         style ={{width: '100%'}} 
                         id="search-bar" 
                         label="Search" 
+                        value={searchText}
                         variant="outlined" 
+                        onKeyDown={handleSearch}
+                        onChange={handleSearchChange}
                     />
                 </Grid>
                 <Grid container justifyContent="center" item xs={2}>
