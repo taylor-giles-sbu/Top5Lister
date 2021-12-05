@@ -23,7 +23,8 @@ export const GlobalStoreActionType = {
     UNMARK_LIST_FOR_DELETION: "UNMARK_LIST_FOR_DELETION",
     SET_CURRENT_TAB: "SET_CURRENT_TAB",
     SET_LIST_TO_EDIT: "SET_LIST_TO_EDIT",
-    SET_LIST_LIKE_STATUS: "SET_LIST_LIKE_STATUS"
+    SET_LIST_LIKE_STATUS: "SET_LIST_LIKE_STATUS",
+    UPDATE_VIEW: "UPDATE_VIEW"
 }
 
 export const HOMESCREEN_TAB_TYPE = {
@@ -31,6 +32,14 @@ export const HOMESCREEN_TAB_TYPE = {
     TAB_LISTS: "Lists",
     TAB_USERS: "Users",
     TAB_COMMUNITY: "Community"
+}
+
+export const SORT_TYPE = {
+    SORT_DATE_NEWEST: "DATE_NEWEST",
+    SORT_DATE_OLDEST: "DATE_OLDEST",
+    SORT_VIEWS: "VIEWS",
+    SORT_LIKES: "LIKES",
+    SORT_DISLIKES: "DISLIKES"
 }
 
 // WITH THIS WE'RE MAKING OUR GLOBAL DATA STORE
@@ -43,7 +52,8 @@ function GlobalStoreContextProvider(props) {
         currentTab: null,
         newListCounter: 0,
         listToEdit: null,
-        listMarkedForDeletion: null
+        listMarkedForDeletion: null,
+        sortType: SORT_TYPE.SORT_DATE_NEWEST
     });
     const history = useHistory();
 
@@ -65,7 +75,8 @@ function GlobalStoreContextProvider(props) {
                     currentTab: store.currentTab,
                     newListCounter: store.newListCounter + 1,
                     listToEdit: payload.listToEdit,
-                    listMarkedForDeletion: null
+                    listMarkedForDeletion: null,
+                    sortType: store.sortType
                 })
             }
             // GET ALL THE LISTS SO WE CAN PRESENT THEM
@@ -76,7 +87,8 @@ function GlobalStoreContextProvider(props) {
                     currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
-                    listMarkedForDeletion: null
+                    listMarkedForDeletion: null,
+                    sortType: store.sortType
                 });
             }
             // // PREPARE TO DELETE A LIST
@@ -87,7 +99,8 @@ function GlobalStoreContextProvider(props) {
                     currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
-                    listMarkedForDeletion: payload
+                    listMarkedForDeletion: payload,
+                    sortType: store.sortType
                 });
             }
             // Unmark list for deletion
@@ -98,7 +111,8 @@ function GlobalStoreContextProvider(props) {
                     currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
-                    listMarkedForDeletion: null
+                    listMarkedForDeletion: null,
+                    sortType: store.sortType
                 });
             }
 
@@ -110,7 +124,8 @@ function GlobalStoreContextProvider(props) {
                     currentTab: store.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: payload,
-                    listMarkedForDeletion: null
+                    listMarkedForDeletion: null,
+                    sortType: store.sortType
                 });
             }
             //CHANGE TAB
@@ -121,7 +136,20 @@ function GlobalStoreContextProvider(props) {
                     currentTab: payload.currentTab,
                     newListCounter: store.newListCounter,
                     listToEdit: null,
-                    listMarkedForDeletion: null
+                    listMarkedForDeletion: null,
+                    sortType: store.sortType
+                })
+            }
+
+            case GlobalStoreActionType.UPDATE_VIEW: {
+                return setStore({
+                    lists: payload.lists,
+                    shownLists: payload.shownLists,
+                    currentTab: payload.currentTab,
+                    newListCounter: store.newListCounter,
+                    listToEdit: null,
+                    listMarkedForDeletion: null,
+                    sortType: payload.sortType
                 })
             }
             default:
@@ -204,7 +232,7 @@ function GlobalStoreContextProvider(props) {
     store.deleteList = async function (listToDelete) {
         let response = await api.deleteTop5ListById(listToDelete._id);
         if (response.status === 200) {
-            store.loadLists();
+            store.updateView(store.currentTab, store.sortType);
             history.push("/");
         }
     }
@@ -261,7 +289,12 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.setCurrentTab = async function (tab) {
-        async function setTab(tab, lists){
+        store.updateView(tab, SORT_TYPE.SORT_DATE_NEWEST)
+    }
+
+    // Updates the page with fresh lists from the server
+    store.updateView = async function (tab, sortType) {
+        async function setTabAndSort(tab, sortType, lists){
             let newShownLists = []
             switch (tab) {
                 case HOMESCREEN_TAB_TYPE.TAB_HOME: {
@@ -284,21 +317,33 @@ function GlobalStoreContextProvider(props) {
                     break;
                 }
             }
+            newShownLists.sort(store.getSortFunction(sortType))
             
             storeReducer({
-                type: GlobalStoreActionType.SET_CURRENT_TAB, 
+                type: GlobalStoreActionType.UPDATE_VIEW, 
                 payload: {
                     lists: lists,
                     shownLists: newShownLists,
-                    currentTab: tab
+                    currentTab: tab,
+                    sortType: sortType
                 }
             })
         }
-        store.getLists().then((lists) => setTab(tab, lists))
+        store.getLists().then((lists) => setTabAndSort(tab, sortType, lists))
     }
 
-    store.sortLists = function (sortBy) {
+    store.sortBy = function (sortType) {
+        store.updateView(store.currentTab, sortType)
+    }
 
+    store.getSortFunction = function(sortType){
+        switch(sortType){
+            case SORT_TYPE.SORT_DATE_NEWEST: return ((list1, list2) => { return list2.datePublished - list1.datePublished });
+            case SORT_TYPE.SORT_DATE_OLDEST: return ((list1, list2) => { return list1.datePublished - list2.datePublished });
+            case SORT_TYPE.SORT_VIEWS: return ((list1, list2) => { return list2.views - list1.views });
+            case SORT_TYPE.SORT_LIKES: return ((list1, list2) => { return store.numLikes(list2) - store.numLikes(list1) });
+            case SORT_TYPE.SORT_DISLIKES: return ((list1, list2) => { return store.numDislikes(list2) - store.numDislikes(list1) });
+        }
     }
 
     store.filterByName = function (name) {
@@ -316,14 +361,14 @@ function GlobalStoreContextProvider(props) {
     store.likeList = async function (id) {
         const response = await api.likeTop5List(id);
         if (response.status === 200) {
-            store.loadLists(); 
+            store.updateView(store.currentTab, store.sortType); 
         }
     }
 
     store.dislikeList = async function (id) {
         const response = await api.dislikeTop5List(id);
         if (response.status === 200) {
-            store.loadLists(); 
+            store.updateView(store.currentTab, store.sortType);  
         }
     }
 
@@ -345,6 +390,14 @@ function GlobalStoreContextProvider(props) {
 
     store.isListOwnedByMe = function(list){
         return list.owner === auth.user.email
+    }
+
+    store.numLikes = function(list){
+        return list.userLikes.reduce((numLikes, item) => { return (item.liked) ? numLikes+1 : numLikes }, 0);
+    }
+
+    store.numDislikes = function(list){
+        return list.userLikes.reduce((numDislikes, item) => { return (item.liked) ? numDislikes : numDislikes + 1 }, 0);
     }
 
 

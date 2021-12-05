@@ -49,11 +49,11 @@ function ListCard(props) {
 
     let backgroundColor = (list.isPublished) ? "complement.main" : "unpublished.main"
 
-    let dateObj = new Date(list.dateUpdated)
+    let dateObj = new Date(list.datePublished)
     let dateString = String(dateObj.getMonth() + 1) + "/" + String(dateObj.getDate()) + "/" + dateObj.getFullYear();
 
-    let likes = list.userLikes.reduce((numLikes, item) => { return (item.liked) ? numLikes+1 : numLikes }, 0);
-    let dislikes = list.userLikes.reduce((numDislikes, item) => { return (item.liked) ? numDislikes : numDislikes + 1 }, 0);
+    let likes = store.numLikes(list);
+    let dislikes = store.numDislikes(list);
 
     let likeColor = (store.isListLiked(list)) ? "selection" : "action"
     let dislikeColor = (store.isListDisliked(list)) ? "selection" : "action"

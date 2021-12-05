@@ -10,7 +10,7 @@ createTop5List = (req, res) => {
         })
     }
     body.isPublished = false;
-    body.dateUpdated = new Date();
+    body.datePublished = 0;
     body.comments = [];
     body.userLikes = [];
     body.views = 0;
@@ -332,6 +332,7 @@ publishTop5List = async (req, res) => {
                     console.log("req.body.name, req.body.items: " + req.body.name + ", " + req.body.items);
 
                     list.isPublished = true;
+                    list.datePublished = new Date();
                     list.save().then(() => {
                         console.log("SUCCESS!!!");
                         return res.status(200).json({

@@ -1,7 +1,7 @@
-import { Button, Grid, IconButton, TextField, Toolbar } from '@mui/material';
+import { Button, Grid, IconButton, TextField, Toolbar, Menu, MenuItem } from '@mui/material';
 import { useContext, useState } from 'react';
 import AuthContext from '../auth';
-import { GlobalStoreContext, HOMESCREEN_TAB_TYPE } from '../store'
+import { GlobalStoreContext, HOMESCREEN_TAB_TYPE, SORT_TYPE } from '../store'
 import HomeIcon from '@mui/icons-material/Home';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PersonIcon from '@mui/icons-material/Person';
@@ -11,6 +11,8 @@ import SortIcon from '@mui/icons-material/Sort';
 export default function HomeToolbar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const isMenuOpen = Boolean(anchorEl);
 
     let homeColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_HOME ? "selection" : "black"
     let listsColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_LISTS ? "selection" : "black"
@@ -40,6 +42,58 @@ export default function HomeToolbar() {
     function handleCommunity(){
         store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_COMMUNITY)
     }
+
+    const handleSortMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+    };
+
+    const sortMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            id={'sort-menu'}
+            keepMounted
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            open={isMenuOpen}
+            onClose={handleMenuClose}
+        >
+            <MenuItem onClick={handleMenuClose}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DATE_NEWEST)}}>
+                    {'Publish Date (Newest)'}
+                </Button>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DATE_NEWEST)}}>
+                    {'Publish Date (Oldest)'}
+                </Button>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DATE_NEWEST)}}>
+                    {'Views'}
+                </Button>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_LIKES)}}>
+                    {'Likes'}
+                </Button>
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Button style={{justifyContent: "flex-start"}} color="black" fullWidth onClick={() => {store.sortBy(SORT_TYPE.SORT_DISLIKES)}}>
+                    {'Dislikes'}
+                </Button>
+            </MenuItem>
+        </Menu>
+    );
 
     return (
         <Toolbar>
@@ -81,9 +135,11 @@ export default function HomeToolbar() {
                         size="large"
                         variant="text" 
                         color="black" 
+                        onClick={handleSortMenuOpen}
                         startIcon={<SortIcon fontSize="large"/>}>
                         Sort By
                     </Button>
+                    {sortMenu}
                 </Grid>
             </Grid>
         </Toolbar>
