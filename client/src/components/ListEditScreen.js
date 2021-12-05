@@ -20,8 +20,11 @@ const ListEditScreen = () => {
     }
 
     function handlePublish(){
-
+        store.publishEditedList();
     }
+    console.log("hfjkdlsa")
+    console.log(list)
+    console.log(list.items)
 
     return (
         <Box sx={{

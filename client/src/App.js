@@ -8,11 +8,10 @@ import {
     HomeWrapper,
     LoginScreen,
     RegisterScreen,
-    Statusbar,
     WorkspaceScreen
 } from './components'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { indigo, purple, amber, deepPurple, grey } from '@mui/material/colors';
+import { indigo, yellow, amber, deepPurple, grey, red } from '@mui/material/colors';
 
 
 /**
@@ -32,8 +31,17 @@ import { indigo, purple, amber, deepPurple, grey } from '@mui/material/colors';
         accent: {
             main: amber[700]
         },
+        selection: {
+            main: indigo[500]
+        },
+        unpublished:{
+            main: yellow[50]
+        },
         black: {
             main: "#000000"
+        },
+        red:{
+            main: red[500]
         }
     }
 });

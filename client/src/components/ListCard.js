@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { GlobalStoreContext } from '../store'
 import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -23,17 +23,11 @@ function ListCard(props) {
     const [text, setText] = useState("");
     const list = props.list;
 
-    function handleToggleEdit(event) {
+    function handleEdit(event) {
         event.stopPropagation();
-        toggleEdit();
-    }
-
-    function toggleEdit() {
-        let newActive = !editActive;
-        if (newActive) {
-            store.setIsListNameEditActive();
-        }
-        setEditActive(newActive);
+        console.log("ready to edit")
+        console.log(list)
+        store.setListToEdit(list)
     }
 
     async function handleDeleteList(event) {
@@ -53,8 +47,7 @@ function ListCard(props) {
         store.dislikeList(list._id)
     }
 
-    // TODO Change this according to list publish status
-    let backgroundColor ="complement.main"
+    let backgroundColor = (list.isPublished) ? "complement.main" : "unpublished.main"
 
     let dateObj = new Date(list.dateUpdated)
     let dateString = String(dateObj.getMonth() + 1) + "/" + String(dateObj.getDate()) + "/" + dateObj.getFullYear();
@@ -62,8 +55,40 @@ function ListCard(props) {
     let likes = list.userLikes.reduce((numLikes, item) => { return (item.liked) ? numLikes+1 : numLikes }, 0);
     let dislikes = list.userLikes.reduce((numDislikes, item) => { return (item.liked) ? numDislikes : numDislikes + 1 }, 0);
 
-    let likeColor = (store.isListLiked(list)) ? "secondary" : "action"
-    let dislikeColor = (store.isListDisliked(list)) ? "secondary" : "action"
+    let likeColor = (store.isListLiked(list)) ? "selection" : "action"
+    let dislikeColor = (store.isListDisliked(list)) ? "selection" : "action"
+
+    let publish = (list.isPublished) 
+        ? (<Typography variant="caption"> {"Published: " + dateString} </Typography>)
+        : ""
+
+    let likesAndViewsOrEdit = (list.isPublished)
+        ? <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
+            <Grid item container justifyContent="center" direction="row">
+                <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
+                    <IconButton size="small" onClick={handleLikeList}>
+                        <ThumbUpIcon color={likeColor}/>
+                    </IconButton>
+                    <Typography variant="subtitle2">
+                        {likes}
+                    </Typography>
+                </Grid>
+                <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
+                    <IconButton size="small" onClick={handleDislikeList}>
+                        <ThumbDownIcon color={dislikeColor}/>
+                    </IconButton>
+                    <Typography variant="subtitle2">
+                        {dislikes}
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Grid item >
+                <Typography variant="caption">
+                    {list.views + " Views"}
+                </Typography>
+            </Grid>
+        </Grid>
+        : (<Button variant="text" color="black" onClick={handleEdit}> Edit </Button>)
 
     return (
         <Accordion sx={{ bgcolor: backgroundColor}}>
@@ -76,36 +101,10 @@ function ListCard(props) {
                         <Typography variant="subtitle1">
                             {list.owner}
                         </Typography>
-                        <Typography variant="caption">
-                            {"Published: " + dateString}
-                        </Typography>
+                        { publish }
                     </Grid>
                     <Grid item xs="auto" container direction="row">
-                        <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
-                            <Grid item container justifyContent="center" direction="row">
-                                <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                                    <IconButton size="small" onClick={handleLikeList}>
-                                        <ThumbUpIcon color={likeColor}/>
-                                    </IconButton>
-                                    <Typography variant="subtitle2">
-                                        {likes}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                                    <IconButton size="small" onClick={handleDislikeList}>
-                                        <ThumbDownIcon color={dislikeColor}/>
-                                    </IconButton>
-                                    <Typography variant="subtitle2">
-                                        {dislikes}
-                                    </Typography>
-                                </Grid>
-                            </Grid>
-                            <Grid item >
-                                <Typography variant="caption">
-                                    {list.views + " Views"}
-                                </Typography>
-                            </Grid>
-                        </Grid>
+                        {likesAndViewsOrEdit}
                         <Grid item xs="auto">
                             <IconButton onClick={handleDeleteList} size="large">
                                 <DeleteIcon fontSize="large"/>
@@ -119,7 +118,7 @@ function ListCard(props) {
                     p: 1,
                     borderRadius:"16px",
                     backgroundColor:"secondary.main"
-                    }}>
+                }}>
                     <List sx={{ width: '100%'}}>
                         <Top5Item index={0} item={list.items[0]}/>
                         <Top5Item index={1} item={list.items[1]}/>

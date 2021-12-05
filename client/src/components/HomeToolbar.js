@@ -12,10 +12,18 @@ export default function HomeToolbar() {
     const { auth } = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
 
-    let homeColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_HOME ? "secondary" : "black"
-    let listsColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_LISTS ? "secondary" : "black"
-    let usersColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_USERS ? "secondary" : "black"
-    let communityColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_COMMUNITY ? "secondary" : "black"
+    let homeColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_HOME ? "selection" : "black"
+    let listsColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_LISTS ? "selection" : "black"
+    let usersColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_USERS ? "selection" : "black"
+    let communityColor = store.currentTab === HOMESCREEN_TAB_TYPE.TAB_COMMUNITY ? "selection" : "black"
+
+    //Disabled colors
+    if(store.listToEdit !== null){
+        homeColor = "disabled"
+        listsColor = "disabled"
+        usersColor = "disabled"
+        communityColor = "disabled"
+    }
 
     function handleHome() {
         store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME)

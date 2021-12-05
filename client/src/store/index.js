@@ -246,15 +246,20 @@ function GlobalStoreContextProvider(props) {
         }
     }
 
-    store.getListById = async function(id){
-
+    store.publishEditedList = async function() {
+        const response = await api.publishTop5ListById(store.listToEdit._id);
+        if (response.status === 200){
+            store.loadLists(); //This clears the listToEdit
+        }
     }
 
-    store.setListToEdit = function (id) {
-        let listToEdit = store.getListById(id);
+    store.getListById = async function(id){
+    }
+
+    store.setListToEdit = function (list) {
         storeReducer({
             type: GlobalStoreActionType.SET_LIST_TO_EDIT,
-            payload: listToEdit
+            payload: list
         })
     }
 

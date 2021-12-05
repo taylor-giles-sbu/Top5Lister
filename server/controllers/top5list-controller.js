@@ -295,6 +295,61 @@ dislikeTop5List = async (req, res) => {
         })
     })
 }
+publishTop5List = async (req, res) => {
+    const body = req.body
+    console.log("updateTop5List: " + JSON.stringify(body));
+    console.log("req.body.name, req.body.items: " + req.body.name + ", " + req.body.items);
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+
+    Top5List.findOne({ _id: req.params.id }, (err, top5List) => {
+        console.log("top5List found: " + JSON.stringify(top5List));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Top 5 List not found!',
+            })
+        }
+
+        // DOES THIS LIST BELONG TO THIS USER?
+        async function asyncFindUser(list) {
+            await User.findOne({ email: list.owner }, (err, user) => {
+                console.log("user._id: " + user._id);
+                console.log("req.userId: " + req.userId);
+                if (user._id == req.userId) {
+                    console.log("correct user!");
+                    console.log("req.body.name, req.body.items: " + req.body.name + ", " + req.body.items);
+
+                    list.isPublished = true;
+                    list.save().then(() => {
+                        console.log("SUCCESS!!!");
+                        return res.status(200).json({
+                            success: true,
+                            id: list._id,
+                            message: 'Top 5 List updated!',
+                        })
+                    }).catch(error => {
+                        console.log("FAILURE: " + JSON.stringify(error));
+                        return res.status(404).json({
+                            error,
+                            message: 'Top 5 List not updated!',
+                        })
+                    })
+                }
+                else {
+                    console.log("incorrect user!");
+                    return res.status(400).json({ success: false, description: "authentication error" });
+                }
+            });
+        }
+        asyncFindUser(top5List);
+    })
+}
 
 module.exports = {
     createTop5List,
@@ -304,5 +359,6 @@ module.exports = {
     getTop5Lists,
     updateTop5List,
     likeTop5List,
-    dislikeTop5List
+    dislikeTop5List,
+    publishTop5List
 }
