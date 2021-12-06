@@ -13,6 +13,7 @@ import WorkspaceScreen from './WorkspaceScreen'
 import ListViewScreen from './ListViewScreen'
 import ListEditScreen from './ListEditScreen'
 import ListWrapper from './ListWrapper'
+import CommentItem from './CommentItem'
 /*
     This serves as a module so that we can import
     all the other components as we wish.
@@ -34,4 +35,5 @@ export {
     WorkspaceScreen,
     ListViewScreen,
     ListEditScreen,
-    ListWrapper }
+    ListWrapper,
+    CommentItem }

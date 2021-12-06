@@ -108,7 +108,7 @@ export default function HomeToolbar() {
 
     return (
         <Toolbar>
-            <Grid container direction="row" justifyContent="space-between">
+            <Grid container direction="row" spacing={2} justifyContent="space-between">
                 <Grid container justifyContent="space-around" item md={4} lg={3}>
                     <IconButton 
                         disabled={store.listToEdit !== null} 
@@ -131,7 +131,7 @@ export default function HomeToolbar() {
                         <FunctionsIcon color={communityColor} fontSize='large'/>
                     </IconButton>
                 </Grid>
-                <Grid container justifyContent="center" item xs={6}>
+                <Grid container justifyContent="center" item xs>
                     <TextField 
                         disabled={store.listToEdit !== null} 
                         style ={{width: '100%'}} 
@@ -143,7 +143,7 @@ export default function HomeToolbar() {
                         onChange={handleSearchChange}
                     />
                 </Grid>
-                <Grid container justifyContent="center" item xs={2}>
+                <Grid container justifyContent="center" item xs='auto'>
                     <Button 
                         disabled={store.listToEdit !== null} 
                         size="large"

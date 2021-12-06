@@ -434,6 +434,13 @@ function GlobalStoreContextProvider(props) {
         }
     }
 
+    store.addListComment = async function(id, comment){
+        const response = await api.commentTop5List(id, comment);
+        if(response.status === 200){
+            store.updateView(store.currentTab, store.sortType, store.searchObj);
+        }
+    }
+
 
 
     return (

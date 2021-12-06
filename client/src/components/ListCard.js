@@ -4,11 +4,11 @@ import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
-import { Accordion, AccordionSummary, AccordionDetails, Button, Typography, Grid, List} from '@mui/material'
+import { Accordion, AccordionSummary, AccordionDetails, Button, Typography, Grid, List, TextField} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import { Top5Item } from '.';
+import { Top5Item, CommentItem } from '.';
 
 /*
     This is a card in our list of top 5 lists. It lets select
@@ -19,8 +19,7 @@ import { Top5Item } from '.';
 */
 function ListCard(props) {
     const { store } = useContext(GlobalStoreContext);
-    const [editActive, setEditActive] = useState(false);
-    const [text, setText] = useState("");
+    const [commentText, setCommentText] = useState("");
     const list = props.list;
 
     function handleEdit(event) {
@@ -45,6 +44,26 @@ function ListCard(props) {
     async function handleDislikeList(event){
         event.stopPropagation();
         store.dislikeList(list._id)
+    }
+
+    const handleCommentChange = (event) =>{
+        setCommentText(event.target.value)
+    }
+
+    const handleComment = (event) => {
+        if(event.keyCode == 13){
+            if(event.target.value.length > 0){
+                store.addListComment(list._id, event.target.value)
+                setCommentText("")
+            }
+            
+        }
+    }
+
+    let handleAccordionChange = (event, newExpanded) => {
+        if(newExpanded){
+            store.viewList(list._id)
+        }
     }
 
     let backgroundColor = (list.isPublished) ? "complement.main" : "unpublished.main"
@@ -96,11 +115,7 @@ function ListCard(props) {
         </Grid>
         : (<Button variant="text" color="black" onClick={handleEdit}> Edit </Button>)
 
-    let handleAccordionChange = (event, newExpanded) => {
-        if(newExpanded){
-            store.viewList(list._id)
-        }
-    }
+    let commentItems = list.comments.map((item) => {return <CommentItem comment={item}/>})
 
     return (
         <Accordion sx={{ bgcolor: backgroundColor}} onChange={handleAccordionChange}>
@@ -124,19 +139,41 @@ function ListCard(props) {
                 </Grid>
             </AccordionSummary>
             <AccordionDetails>
-                <Box display="flex" m="auto" alignItems='center' sx={{ 
-                    p: 1,
-                    borderRadius:"16px",
-                    backgroundColor:"secondary.main"
-                }}>
-                    <List sx={{ width: '100%'}}>
-                        <Top5Item index={0} item={list.items[0]}/>
-                        <Top5Item index={1} item={list.items[1]}/>
-                        <Top5Item index={2} item={list.items[2]}/>
-                        <Top5Item index={3} item={list.items[3]}/>
-                        <Top5Item index={4} item={list.items[4]}/>
-                    </List>
-                </Box>
+                <Grid container direction="row" spacing={2}>
+                    <Grid item xs={6}>
+                        <Box height='250px' display="flex" m="auto" alignItems='center' sx={{ 
+                            p: 1,
+                            borderRadius:"16px",
+                            backgroundColor:"secondary.main"
+                        }}>
+                            <List sx={{ width: '100%'}}>
+                                <Top5Item index={0} item={list.items[0]}/>
+                                <Top5Item index={1} item={list.items[1]}/>
+                                <Top5Item index={2} item={list.items[2]}/>
+                                <Top5Item index={3} item={list.items[3]}/>
+                                <Top5Item index={4} item={list.items[4]}/>
+                            </List>
+                        </Box>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Box height='250px' display="flex" m="auto" alignItems='center' sx={{ 
+                            p: 1,
+                            borderRadius:"16px",
+                            backgroundColor:"transparent",
+                        }}>
+                            <Grid container direction="column" spacing={1}>
+                                <Grid item xs>
+                                    <List style={{height:"185px", overflow: 'auto', borderTopLeftRadius:'16px'}}sx={{ width: '100%'}}>
+                                        {commentItems}
+                                    </List>
+                                </Grid>
+                                <Grid item xs='auto'>
+                                    <TextField borderRadius='10px' fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </Grid>
+                </Grid>
             </AccordionDetails>
         </Accordion>
     );

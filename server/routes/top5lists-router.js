@@ -13,5 +13,6 @@ router.put('/liketop5list/:id', auth.verify, Top5ListController.likeTop5List)
 router.put('/disliketop5list/:id', auth.verify, Top5ListController.dislikeTop5List)
 router.put('/publishtop5list/:id', auth.verify, Top5ListController.publishTop5List)
 router.put('/viewtop5list/:id', auth.verify, Top5ListController.viewTop5List)
+router.put('/commenttop5list/:id', auth.verify, Top5ListController.commentTop5List)
 
 module.exports = router

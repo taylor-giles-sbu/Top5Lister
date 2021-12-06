@@ -20,11 +20,11 @@ const ListEditScreen = () => {
     }
 
     function handlePublish(){
+        store.updateEditedList();
         store.publishEditedList();
     }
-    console.log("hfjkdlsa")
-    console.log(list)
-    console.log(list.items)
+
+    let canPublish = !(list.items.includes(undefined) || list.items.includes("") || (new Set(list.items).size !== list.items.length))
 
     return (
         <Box sx={{
@@ -69,7 +69,7 @@ const ListEditScreen = () => {
                         </Button>
                     </Grid>
                     <Grid item xs="auto">
-                        <Button onClick={handlePublish} color="primary" variant="contained">
+                        <Button disabled={!canPublish} onClick={handlePublish} color="primary" variant="contained">
                             Publish
                         </Button>
                     </Grid>

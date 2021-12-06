@@ -382,6 +382,46 @@ viewTop5List = async (req, res) => {
     })
 }
 
+commentTop5List = async (req, res) => {
+    const body = req.body
+    console.log("\n\n\n\n\n")
+    console.log(body)
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+
+    Top5List.findOne({ _id: req.params.id }, (err, top5List) => {
+        console.log("top5List found: " + JSON.stringify(top5List));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Top 5 List not found!',
+            })
+        }
+
+        User.findOne({ _id: req.userId }, (err, user) => {
+            top5List.comments.push({user: user.email, content: body.comment})
+            top5List.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: top5List._id,
+                    message: 'Top 5 List updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'Top 5 List not updated!',
+                })
+            })
+        })
+    })
+}
+
 
 module.exports = {
     createTop5List,
@@ -393,5 +433,6 @@ module.exports = {
     likeTop5List,
     dislikeTop5List,
     publishTop5List,
-    viewTop5List
+    viewTop5List,
+    commentTop5List
 }

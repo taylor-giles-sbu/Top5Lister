@@ -15,8 +15,6 @@ import { Typography, Grid } from '@mui/material';
 function Top5Item(props) {
     const { store } = useContext(GlobalStoreContext);
     const [editActive, setEditActive] = useState(false);
-    const [draggedTo, setDraggedTo] = useState(0);
-    const [text, setText] = useState("");
     const item = props.item;
     const index = props.index;
 
@@ -40,11 +38,6 @@ function Top5Item(props) {
     let editStatus = false;
     if (store.isItemEditActive) {
         editStatus = true;
-    }
-
-    let itemClass = "top5-item";
-    if (draggedTo) {
-        itemClass = "top5-item-dragged-to";
     }
 
 

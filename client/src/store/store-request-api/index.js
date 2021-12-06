@@ -46,6 +46,11 @@ export const likeTop5List = (id) => api.put(`/liketop5list/${id}`)
 export const dislikeTop5List = (id) => api.put(`/disliketop5list/${id}`)
 
 export const viewTop5List = (id) => api.put(`/viewtop5list/${id}`)
+export const commentTop5List = (id, content) => {
+    return api.put(`/commenttop5list/${id}`, {
+        comment : content
+    })
+}
 
 const apis = {
     createTop5List,
@@ -56,7 +61,8 @@ const apis = {
     likeTop5List,
     dislikeTop5List,
     publishTop5ListById,
-    viewTop5List
+    viewTop5List,
+    commentTop5List
 }
 
 export default apis
