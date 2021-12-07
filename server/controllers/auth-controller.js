@@ -21,7 +21,7 @@ getLoggedIn = async (req, res) => {
             user: {
                 firstName: loggedInUser.firstName,
                 lastName: loggedInUser.lastName,
-                email: loggedInUser.email
+                username: loggedInUser.username
             }
         })
     } catch (err) {
@@ -33,21 +33,21 @@ getLoggedIn = async (req, res) => {
 loginUser = async (req, res) => {
     console.log("loginUser");
     try {
-        const { email, password } = req.body;
+        const { username, password } = req.body;
 
-        if (!email || !password) {
+        if (!username || !password) {
             return res
                 .status(400)
                 .json({ errorMessage: "Please enter all required fields." });
         }
 
-        const existingUser = await User.findOne({ email: email });
+        const existingUser = await User.findOne({ username: username });
         console.log("existingUser: " + existingUser);
         if (!existingUser) {
             return res
                 .status(401)
                 .json({
-                    errorMessage: "Wrong email or password provided."
+                    errorMessage: "Wrong username or password provided."
                 })
         }
 
@@ -58,7 +58,7 @@ loginUser = async (req, res) => {
             return res
                 .status(401)
                 .json({
-                    errorMessage: "Wrong email or password provided."
+                    errorMessage: "Wrong username or password provided."
                 })
         }
 
@@ -75,7 +75,7 @@ loginUser = async (req, res) => {
             user: {
                 firstName: existingUser.firstName,
                 lastName: existingUser.lastName,  
-                email: existingUser.email              
+                username: existingUser.username              
             }
         })
 
@@ -96,9 +96,9 @@ logoutUser = async (req, res) => {
 
 registerUser = async (req, res) => {
     try {
-        const { firstName, lastName, email, password, passwordVerify } = req.body;
-        console.log("create user: " + firstName + " " + lastName + " " + email + " " + password + " " + passwordVerify);
-        if (!firstName || !lastName || !email || !password || !passwordVerify) {
+        const { firstName, lastName, username, email, password, passwordVerify } = req.body;
+        console.log("create user: " + firstName + " " + lastName + " " + username + " " + email + " " + password + " " + passwordVerify);
+        if (!firstName || !lastName || !username || !email || !password || !passwordVerify) {
             return res
                 .status(400)
                 .json({ errorMessage: "Please enter all required fields." });
@@ -120,14 +120,14 @@ registerUser = async (req, res) => {
                 })
         }
         console.log("password and password verify match");
-        const existingUser = await User.findOne({ email: email });
+        const existingUser = await User.findOne({$or:[{username: username},{email: email}]});
         console.log("existingUser: " + existingUser);
         if (existingUser) {
             return res
                 .status(400)
                 .json({
                     success: false,
-                    errorMessage: "An account with this email address already exists."
+                    errorMessage: "An account with this username or email address already exists."
                 })
         }
 
@@ -137,7 +137,7 @@ registerUser = async (req, res) => {
         console.log("passwordHash: " + passwordHash);
 
         const newUser = new User({
-            firstName, lastName, email, passwordHash
+            firstName, lastName, username, email, passwordHash
         });
         const savedUser = await newUser.save();
         console.log("new user saved: " + savedUser._id);
@@ -155,6 +155,7 @@ registerUser = async (req, res) => {
             user: {
                 firstName: savedUser.firstName,
                 lastName: savedUser.lastName,  
+                username: savedUser.username,
                 email: savedUser.email              
             }
         })

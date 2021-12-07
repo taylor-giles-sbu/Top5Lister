@@ -177,7 +177,7 @@ function GlobalStoreContextProvider(props) {
     // THIS FUNCTION CREATES A NEW LIST
     store.createNewList = async function () {
         let newListName = "Untitled" + store.newListCounter;
-        const response = await api.createTop5List(newListName, ["?", "?", "?", "?", "?"], auth.user.email);
+        const response = await api.createTop5List(newListName, ["?", "?", "?", "?", "?"], auth.user.username);
         console.log("createNewList response: " + response);
         if (response.status === 201) {
             let newList = response.data.top5List;
@@ -322,7 +322,7 @@ function GlobalStoreContextProvider(props) {
             let newShownLists = []
             switch (tab) {
                 case HOMESCREEN_TAB_TYPE.TAB_HOME: {
-                    newShownLists = lists.filter(list => list.owner === auth.user.email)
+                    newShownLists = lists.filter(list => list.owner === auth.user.username)
                     break;
                 }
     
@@ -415,7 +415,7 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.isListLiked = function(list){
-        let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.email))
+        let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.username))
         if(index < 0) { 
             return false
         }
@@ -423,7 +423,7 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.isListDisliked = function(list){
-        let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.email))
+        let index = list.userLikes.findIndex((element) =>  (element.user === auth.user.username))
         if(index < 0) { 
             return false
         }
@@ -431,7 +431,7 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.isListOwnedByMe = function(list){
-        return list.owner === auth.user.email
+        return list.owner === auth.user.username
     }
 
     store.numLikes = function(list){

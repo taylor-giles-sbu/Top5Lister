@@ -57,7 +57,7 @@ deleteTop5List = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            User.findOne({ email: list.owner }, (err, user) => {
+            User.findOne({ username: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {
@@ -117,7 +117,7 @@ getTop5ListById = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            await User.findOne({ email: list.owner }, (err, user) => {
+            await User.findOne({ username: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {
@@ -137,9 +137,9 @@ getTop5ListPairs = async (req, res) => {
     console.log("getTop5ListPairs");
     await User.findOne({ _id: req.userId }, (err, user) => {
         console.log("find user with id " + req.userId);
-        async function asyncFindList(email) {
-            console.log("find all Top5Lists owned by " + email);
-            await Top5List.find({ owner: email }, (err, top5Lists) => {
+        async function asyncFindList(username) {
+            console.log("find all Top5Lists owned by " + username);
+            await Top5List.find({ owner: username }, (err, top5Lists) => {
                 console.log("found Top5Lists: " + JSON.stringify(top5Lists));
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
@@ -166,15 +166,15 @@ getTop5ListPairs = async (req, res) => {
                 }
             }).catch(err => console.log(err))
         }
-        asyncFindList(user.email);
+        asyncFindList(user.username);
     }).catch(err => console.log(err))
 }
 getTop5Lists = async (req, res) => {
     await User.findOne({ _id: req.userId }, (err, user) => {
         console.log("find user with id " + req.userId);
-        async function asyncFindList(email) {
-            console.log("find all Top5Lists owned by " + email + " or published");
-            await Top5List.find({$or:[{owner: email},{isPublished:true}]}, (err, top5Lists) => {
+        async function asyncFindList(username) {
+            console.log("find all Top5Lists owned by " + username + " or published");
+            await Top5List.find({$or:[{owner: username},{isPublished:true}]}, (err, top5Lists) => {
                 console.log("found Top5Lists: " + JSON.stringify(top5Lists));
                 if (err) {
                     return res.status(400).json({ success: false, error: err })
@@ -188,7 +188,7 @@ getTop5Lists = async (req, res) => {
                 return res.status(200).json({ success: true, data: top5Lists })
             }).catch(err => console.log(err))
         }
-        asyncFindList(user.email);
+        asyncFindList(user.username);
     }).catch(err => console.log(err))
 }
 updateTop5List = async (req, res) => {
@@ -214,7 +214,7 @@ updateTop5List = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            await User.findOne({ email: list.owner }, (err, user) => {
+            await User.findOne({ username: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {
@@ -262,7 +262,7 @@ likeTop5List = async (req, res) => {
         User.findOne({ _id: req.userId }, (err, user) => {
             console.log("user found: " + JSON.stringify(user));
             console.log("req.userId: " + req.userId);
-            let index = top5List.userLikes.findIndex((element) =>  (element.user === user.email))
+            let index = top5List.userLikes.findIndex((element) =>  (element.user === user.username))
             if(index >= 0){
                 if(top5List.userLikes[index].liked === true){
                     top5List.userLikes.splice(index, 1);
@@ -270,7 +270,7 @@ likeTop5List = async (req, res) => {
                     top5List.userLikes[index].liked = true;
                 }
             } else {
-                top5List.userLikes.push({user: user.email, liked: true})
+                top5List.userLikes.push({user: user.username, liked: true})
             }
             top5List.save().then(() => {
                 console.log("SUCCESS!!!");
@@ -302,7 +302,7 @@ dislikeTop5List = async (req, res) => {
         User.findOne({ _id: req.userId }, (err, user) => {
             console.log("user found: " + JSON.stringify(user));
             console.log("req.userId: " + req.userId);
-            let index = top5List.userLikes.findIndex((element) =>  (element.user === user.email))
+            let index = top5List.userLikes.findIndex((element) =>  (element.user === user.username))
             if(index >= 0){
                 if(top5List.userLikes[index].liked === false){
                     top5List.userLikes.splice(index, 1);
@@ -310,7 +310,7 @@ dislikeTop5List = async (req, res) => {
                     top5List.userLikes[index].liked = false;
                 }
             } else {
-                top5List.userLikes.push({user: user.email, liked: false})
+                top5List.userLikes.push({user: user.username, liked: false})
             }
             top5List.save().then(() => {
                 console.log("SUCCESS!!!");
@@ -349,7 +349,7 @@ publishTop5List = async (req, res) => {
 
         // DOES THIS LIST BELONG TO THIS USER?
         async function asyncFindUser(list) {
-            await User.findOne({ email: list.owner }, (err, user) => {
+            await User.findOne({ username: list.owner }, (err, user) => {
                 console.log("user._id: " + user._id);
                 console.log("req.userId: " + req.userId);
                 if (user._id == req.userId) {
@@ -472,7 +472,7 @@ commentTop5List = async (req, res) => {
         }
 
         User.findOne({ _id: req.userId }, (err, user) => {
-            top5List.comments.push({user: user.email, content: body.comment})
+            top5List.comments.push({user: user.username, content: body.comment})
             top5List.save().then(() => {
                 console.log("SUCCESS!!!");
                 return res.status(200).json({
@@ -554,7 +554,7 @@ commentCommunityList = async (req, res) => {
         }
 
         User.findOne({ _id: req.userId }, (err, user) => {
-            communityList.comments.push({user: user.email, content: body.comment})
+            communityList.comments.push({user: user.username, content: body.comment})
             communityList.save().then(() => {
                 console.log("SUCCESS!!!");
                 return res.status(200).json({
@@ -586,7 +586,7 @@ likeCommunityList = async (req, res) => {
         User.findOne({ _id: req.userId }, (err, user) => {
             console.log("user found: " + JSON.stringify(user));
             console.log("req.userId: " + req.userId);
-            let index = communityList.userLikes.findIndex((element) =>  (element.user === user.email))
+            let index = communityList.userLikes.findIndex((element) =>  (element.user === user.username))
             if(index >= 0){
                 if(communityList.userLikes[index].liked === true){
                     communityList.userLikes.splice(index, 1);
@@ -594,7 +594,7 @@ likeCommunityList = async (req, res) => {
                     communityList.userLikes[index].liked = true;
                 }
             } else {
-                communityList.userLikes.push({user: user.email, liked: true})
+                communityList.userLikes.push({user: user.username, liked: true})
             }
             communityList.save().then(() => {
                 console.log("SUCCESS!!!");
@@ -626,7 +626,7 @@ dislikeCommunityList = async (req, res) => {
         User.findOne({ _id: req.userId }, (err, user) => {
             console.log("user found: " + JSON.stringify(user));
             console.log("req.userId: " + req.userId);
-            let index = communityList.userLikes.findIndex((element) =>  (element.user === user.email))
+            let index = communityList.userLikes.findIndex((element) =>  (element.user === user.username))
             if(index >= 0){
                 if(communityList.userLikes[index].liked === false){
                     communityList.userLikes.splice(index, 1);
@@ -634,7 +634,7 @@ dislikeCommunityList = async (req, res) => {
                     communityList.userLikes[index].liked = false;
                 }
             } else {
-                communityList.userLikes.push({user: user.email, liked: false})
+                communityList.userLikes.push({user: user.username, liked: false})
             }
             communityList.save().then(() => {
                 console.log("SUCCESS!!!");
