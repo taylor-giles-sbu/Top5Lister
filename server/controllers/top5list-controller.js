@@ -1,5 +1,6 @@
 const Top5List = require('../models/top5list-model');
 const User = require('../models/user-model');
+const CommunityList = require('../models/community-model')
 
 // TG - Updated for final project
 createTop5List = (req, res) => {
@@ -62,6 +63,35 @@ deleteTop5List = async (req, res) => {
                 if (user._id == req.userId) {
                     console.log("correct user!");
                     Top5List.findOneAndDelete({ _id: req.params.id }, () => {
+                        //Update community lists
+                        async function updateCommunityLists(deletedList){
+                            await CommunityList.findOne({name: list.name}, (err, communityList) => {
+                                console.log("found community list: " + JSON.stringify(communityList));
+                                if (err) {
+                                    return res.status(400).json({ success: false, error: err })
+                                }
+
+                                //Iterate over the items in this list (deletedList) and remove the points from the community list
+                                for(itemIndex in deletedList.items){
+                                    console.log("itemIndex: " + itemIndex)
+                                    let done = false;
+                                    for(communityItemIndex in communityList.items){
+                                        if(communityList.items[communityItemIndex].item === deletedList.items[itemIndex]){
+                                            communityList.items[communityItemIndex].points -= 5-itemIndex;
+                                            done = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(communityList.items[0].points < 1){
+                                    CommunityList.findOneAndDelete({name: list.name}, ()=>{})
+                                } else {
+                                    communityList.save()
+                                }
+                            }).catch(err => console.log(err))
+                        }
+                        updateCommunityLists(list);
+
                         return res.status(200).json({});
                     }).catch(err => console.log(err))
                 }
@@ -329,6 +359,45 @@ publishTop5List = async (req, res) => {
                     list.isPublished = true;
                     list.datePublished = new Date();
                     list.save().then(() => {
+                        //Update community lists
+                        async function updateCommunityLists(addedList){
+                            await CommunityList.find({}, (err, communityLists) => {
+                                console.log("found community lists: " + JSON.stringify(communityLists));
+                                if (err) {
+                                    return res.status(400).json({ success: false, error: err })
+                                }
+                                let listFound = false;
+                                for(communityList of communityLists){
+                                    if(communityList.name === addedList.name){
+                                        for(itemIndex in addedList.items){
+                                            console.log("itemIndex: " + itemIndex)
+                                            let itemFoundAndHandled = false;
+                                            for(communityItemIndex in communityList.items){
+                                                if(communityList.items[communityItemIndex].item === addedList.items[itemIndex]){
+                                                    communityList.items[communityItemIndex].points += 5-itemIndex;
+                                                    itemFoundAndHandled = true;
+                                                    break;
+                                                }
+                                            }
+                                            if(!itemFoundAndHandled){
+                                                communityList.items.push({item: addedList.items[itemIndex], points: (5-itemIndex)})
+                                            }
+                                        }
+                                        communityList.save()
+                                        communityList.numLists++;
+                                        listFound = true;
+                                    }
+                                }
+                                if(!listFound){
+                                    let newItems = addedList.items.map((item, index) => {return {item: item, points: (5-index)}})
+                                    let communityList = new CommunityList( {name: addedList.name, items : newItems, userLikes: [], comments: [], views: 0, numLists: 1})
+                                    communityList.save()
+                                }
+                                
+                            }).catch(err => console.log(err))
+                        }
+                        updateCommunityLists(list);
+                        
                         console.log("SUCCESS!!!");
                         return res.status(200).json({
                             success: true,
@@ -422,6 +491,168 @@ commentTop5List = async (req, res) => {
     })
 }
 
+getCommunityLists = async (req, res) => {
+    await CommunityList.find({}, (err, communityLists) => {
+        console.log("found community lists: " + JSON.stringify(communityLists));
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!communityLists) {
+            console.log("!communityLists.length");
+            return res
+                .status(404)
+                .json({ success: false, error: 'Community Lists not found' })
+        }
+        return res.status(200).json({ success: true, data: communityLists })
+    }).catch(err => console.log(err))
+}
+
+
+viewCommunityList = async (req, res) => {
+    CommunityList.findOne({ _id: req.params.id }, (err, communityList) => {
+        console.log("communityList found: " + JSON.stringify(communityList));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Community List not found!',
+            })
+        }
+        communityList.views = communityList.views + 1;
+        communityList.save().then(() => {
+            console.log("SUCCESS!!!");
+            return res.status(200).json({
+                success: true,
+                id: communityList._id,
+                message: 'communityList updated!',
+            })
+        }).catch(error => {
+            console.log("FAILURE: " + JSON.stringify(error));
+            return res.status(404).json({
+                error,
+                message: 'communityList not updated!',
+            })
+        })
+    })
+}
+
+commentCommunityList = async (req, res) => {
+    const body = req.body
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+
+    CommunityList.findOne({ _id: req.params.id }, (err, communityList) => {
+        console.log("communityList found: " + JSON.stringify(communityList));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'communityList not found!',
+            })
+        }
+
+        User.findOne({ _id: req.userId }, (err, user) => {
+            communityList.comments.push({user: user.email, content: body.comment})
+            communityList.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: communityList._id,
+                    message: 'communityList updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'communityList not updated!',
+                })
+            })
+        })
+    })
+}
+likeCommunityList = async (req, res) => {
+    console.log("likecommunityList");
+    CommunityList.findOne({ _id: req.params.id }, (err, communityList) => {
+        console.log("communityList found: " + JSON.stringify(communityList));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'communityList not found!',
+            })
+        }
+
+        User.findOne({ _id: req.userId }, (err, user) => {
+            console.log("user found: " + JSON.stringify(user));
+            console.log("req.userId: " + req.userId);
+            let index = communityList.userLikes.findIndex((element) =>  (element.user === user.email))
+            if(index >= 0){
+                if(communityList.userLikes[index].liked === true){
+                    communityList.userLikes.splice(index, 1);
+                } else {
+                    communityList.userLikes[index].liked = true;
+                }
+            } else {
+                communityList.userLikes.push({user: user.email, liked: true})
+            }
+            communityList.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: communityList._id,
+                    message: 'Top 5 List updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'Top 5 List not updated!',
+                })
+            })
+        })
+    })
+}
+dislikeCommunityList = async (req, res) => {
+    CommunityList.findOne({ _id: req.params.id }, (err, communityList) => {
+        console.log("communityList found: " + JSON.stringify(communityList));
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'communityList not found!',
+            })
+        }
+
+        User.findOne({ _id: req.userId }, (err, user) => {
+            console.log("user found: " + JSON.stringify(user));
+            console.log("req.userId: " + req.userId);
+            let index = communityList.userLikes.findIndex((element) =>  (element.user === user.email))
+            if(index >= 0){
+                if(communityList.userLikes[index].liked === false){
+                    communityList.userLikes.splice(index, 1);
+                } else {
+                    communityList.userLikes[index].liked = false;
+                }
+            } else {
+                communityList.userLikes.push({user: user.email, liked: false})
+            }
+            communityList.save().then(() => {
+                console.log("SUCCESS!!!");
+                return res.status(200).json({
+                    success: true,
+                    id: communityList._id,
+                    message: 'Top 5 List updated!',
+                })
+            }).catch(error => {
+                console.log("FAILURE: " + JSON.stringify(error));
+                return res.status(404).json({
+                    error,
+                    message: 'Top 5 List not updated!',
+                })
+            })
+        })
+    })
+}
 
 module.exports = {
     createTop5List,
@@ -434,5 +665,10 @@ module.exports = {
     dislikeTop5List,
     publishTop5List,
     viewTop5List,
-    commentTop5List
+    commentTop5List,
+    getCommunityLists,
+    likeCommunityList,
+    dislikeCommunityList,
+    viewCommunityList,
+    commentCommunityList
 }

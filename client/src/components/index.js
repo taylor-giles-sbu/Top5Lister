@@ -14,6 +14,9 @@ import ListViewScreen from './ListViewScreen'
 import ListEditScreen from './ListEditScreen'
 import ListWrapper from './ListWrapper'
 import CommentItem from './CommentItem'
+import CommunityListItem from './CommunityListItem'
+import CommunityListCard from './CommunityListCard'
+
 /*
     This serves as a module so that we can import
     all the other components as we wish.
@@ -36,4 +39,6 @@ export {
     ListViewScreen,
     ListEditScreen,
     ListWrapper,
-    CommentItem }
+    CommentItem,
+    CommunityListItem,
+    CommunityListCard }

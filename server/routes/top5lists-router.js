@@ -15,4 +15,10 @@ router.put('/publishtop5list/:id', auth.verify, Top5ListController.publishTop5Li
 router.put('/viewtop5list/:id', auth.verify, Top5ListController.viewTop5List)
 router.put('/commenttop5list/:id', auth.verify, Top5ListController.commentTop5List)
 
+router.get('/communitylists', auth.verify, Top5ListController.getCommunityLists)
+router.put('/likecommunitylist/:id', auth.verify, Top5ListController.likeCommunityList)
+router.put('/dislikecommunitylist/:id', auth.verify, Top5ListController.dislikeCommunityList)
+router.put('/viewcommunitylist/:id', auth.verify, Top5ListController.viewCommunityList)
+router.put('/commentcommunitylist/:id', auth.verify, Top5ListController.commentCommunityList)
+
 module.exports = router

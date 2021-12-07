@@ -19,9 +19,8 @@ const ListEditScreen = () => {
         store.updateEditedList();
     }
 
-    function handlePublish(){
-        store.updateEditedList();
-        store.publishEditedList();
+    async function handlePublish(){
+        store.updateEditedList().then(store.publishEditedList)
     }
 
     let canPublish = !(list.items.includes(undefined) || list.items.includes("") || (new Set(list.items).size !== list.items.length))

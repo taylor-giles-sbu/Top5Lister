@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalStoreContext, HOMESCREEN_TAB_TYPE } from '../store'
 import ListCard from './ListCard.js'
+import CommunityListCard from './CommunityListCard.js'
 import MUIDeleteModal from './MUIDeleteModal'
 import { Box, Button, Typography, Grid } from '@mui/material'
 import HomeToolbar from './HomeToolbar'
@@ -22,21 +23,6 @@ const HomeScreen = () => {
 
     function handleCreateNewList() {
         store.createNewList();
-    }
-    let listOfLists = "";
-    if (store) {
-        console.log(store.lists)
-        let listCards = store.shownLists.map((list)  => (
-                <ListCard
-                    list={list}
-                />
-        ))
-        listOfLists = 
-            <List sx={{ width: '90%', left: '5%', bgcolor: 'transparent' }}>
-            {
-                listCards
-            }
-            </List>;
     }
 
     let footer = ""
@@ -85,18 +71,7 @@ const HomeScreen = () => {
                 {footer}
             </Grid>
             <MUIDeleteModal/>
-
-            {/* <Grid container direction="column" justifyContent="space-between">
-                <Grid item xs={2}>
-                    <HomeToolbar/>
-                </Grid>
-                <Grid item xs={10}>
-                    <ListViewScreen />
-                </Grid>
-            </Grid> */}
         </Box>
-        
-        
     )
 }
 

@@ -204,11 +204,22 @@ function GlobalStoreContextProvider(props) {
 
     // Don't look at id/name pairs bc theyre useless. Get the whole list for every list
     store.getLists = async function () {
-        console.log("store.loadLists");
         const response = await api.getTop5Lists();
         if (response.status === 200) {
             let listsArray = response.data.data;
             console.log(response)
+            return listsArray;
+        } else {
+            console.log("API FAILED TO GET THE LISTS");
+        }
+    }
+
+    store.getCommunityLists = async function () {
+        const response = await api.getCommunityLists();
+        if (response.status === 200) {
+            let listsArray = response.data.data;
+            console.log(response)
+            console.log(listsArray)
             return listsArray;
         } else {
             console.log("API FAILED TO GET THE LISTS");
@@ -326,7 +337,7 @@ function GlobalStoreContextProvider(props) {
                 }
     
                 case HOMESCREEN_TAB_TYPE.TAB_COMMUNITY: {
-                    newShownLists = lists.filter(list => list.owner === null)
+                    newShownLists = lists;
                     break;
                 }
             }
@@ -344,7 +355,11 @@ function GlobalStoreContextProvider(props) {
                 }
             })
         }
-        store.getLists().then((lists) => setTabAndSort(tab, sortType, searchObj, lists))
+        if(tab != HOMESCREEN_TAB_TYPE.TAB_COMMUNITY){
+            store.getLists().then((lists) => setTabAndSort(tab, sortType, searchObj, lists))
+        } else {
+            store.getCommunityLists().then((lists)=> setTabAndSort(tab, sortType, searchObj, lists))
+        }
     }
 
     store.sortBy = function (sortType) {
@@ -441,7 +456,33 @@ function GlobalStoreContextProvider(props) {
         }
     }
 
+    store.likeCommunityList = async function (id) {
+        const response = await api.likeCommunityList(id);
+        if (response.status === 200) {
+            store.updateView(store.currentTab, store.sortType, store.searchObj); 
+        }
+    }
 
+    store.dislikeCommunityList = async function (id) {
+        const response = await api.dislikeCommunityList(id);
+        if (response.status === 200) {
+            store.updateView(store.currentTab, store.sortType, store.searchObj);  
+        }
+    }
+
+    store.viewCommunityList = async function(id){
+        const response = await api.viewCommunityList(id);
+        if (response.status === 200) {
+            store.updateView(store.currentTab, store.sortType, store.searchObj);  
+        }
+    }
+
+    store.addCommunityListComment = async function(id, comment){
+        const response = await api.commentCommunityList(id, comment);
+        if(response.status === 200){
+            store.updateView(store.currentTab, store.sortType, store.searchObj);
+        }
+    }
 
     return (
         <GlobalStoreContext.Provider value={{

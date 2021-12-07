@@ -52,6 +52,16 @@ export const commentTop5List = (id, content) => {
     })
 }
 
+export const likeCommunityList = (id) => api.put(`/likecommunitylist/${id}`)
+export const dislikeCommunityList = (id) => api.put(`/dislikecommunitylist/${id}`)
+export const viewCommunityList = (id) => api.put(`/viewcommunitylist/${id}`)
+export const commentCommunityList = (id, content) => {
+    return api.put(`/commentcommunitylist/${id}`, {
+        comment : content
+    })
+}
+export const getCommunityLists = () => api.get(`/communitylists/`)
+
 const apis = {
     createTop5List,
     deleteTop5ListById,
@@ -62,7 +72,13 @@ const apis = {
     dislikeTop5List,
     publishTop5ListById,
     viewTop5List,
-    commentTop5List
+    commentTop5List,
+    getCommunityLists,
+    likeCommunityList,
+    viewCommunityList,
+    dislikeCommunityList,
+    viewCommunityList,
+    commentCommunityList
 }
 
 export default apis

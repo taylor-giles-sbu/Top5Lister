@@ -117,6 +117,27 @@ function ListCard(props) {
 
     let commentItems = list.comments.map((item) => {return <CommentItem comment={item}/>})
 
+    let commentView = (list.isPublished)
+        ? <Grid item xs>
+            <Box height='250px' display="flex" m="auto" alignItems='center' sx={{ 
+                p: 1,
+                borderRadius:"16px",
+                backgroundColor:"transparent",
+            }}>
+                <Grid container direction="column" spacing={1}>
+                    <Grid item xs>
+                        <List style={{height:"185px", overflow: 'auto', borderTopLeftRadius:'16px'}}sx={{ width: '100%'}}>
+                            {commentItems}
+                        </List>
+                    </Grid>
+                    <Grid item xs='auto'>
+                        <TextField fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
+                    </Grid>
+                </Grid>
+            </Box>
+        </Grid>
+        : ""
+
     return (
         <Accordion sx={{ bgcolor: backgroundColor}} onChange={handleAccordionChange}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -140,7 +161,7 @@ function ListCard(props) {
             </AccordionSummary>
             <AccordionDetails>
                 <Grid container direction="row" spacing={2}>
-                    <Grid item xs={6}>
+                    <Grid item xs>
                         <Box height='250px' display="flex" m="auto" alignItems='center' sx={{ 
                             p: 1,
                             borderRadius:"16px",
@@ -155,24 +176,7 @@ function ListCard(props) {
                             </List>
                         </Box>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Box height='250px' display="flex" m="auto" alignItems='center' sx={{ 
-                            p: 1,
-                            borderRadius:"16px",
-                            backgroundColor:"transparent",
-                        }}>
-                            <Grid container direction="column" spacing={1}>
-                                <Grid item xs>
-                                    <List style={{height:"185px", overflow: 'auto', borderTopLeftRadius:'16px'}}sx={{ width: '100%'}}>
-                                        {commentItems}
-                                    </List>
-                                </Grid>
-                                <Grid item xs='auto'>
-                                    <TextField borderRadius='10px' fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
-                                </Grid>
-                            </Grid>
-                        </Box>
-                    </Grid>
+                    {commentView}
                 </Grid>
             </AccordionDetails>
         </Accordion>
