@@ -15,6 +15,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import AlertDialog from './AlertDialog';
 
 export default function LoginScreen() {
     const { auth } = useContext(AuthContext);
@@ -27,10 +28,18 @@ export default function LoginScreen() {
             formData.get('password')
         );
 
-    };
+    }; 
+    console.log(auth.isError)
 
     return (
         <Grid container component="main" sx={{ height: '100vh' }}>
+            <AlertDialog 
+                open={auth.isError}
+                title={"Error"}
+                description={auth.errorText}
+                buttonText = {"OK"}
+                onButtonClick = {auth.clearError}
+            />
             <CssBaseline />
             <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
                 <Box

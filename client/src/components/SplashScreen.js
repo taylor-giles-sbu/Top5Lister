@@ -1,7 +1,16 @@
 import { Button, Grid, Box, Typography } from "@mui/material";
-import theme from "../App"
+import { useContext } from 'react';
+import AuthContext from '../auth'
 
 export default function SplashScreen() {
+    const { auth } = useContext(AuthContext);
+
+    const handleGuestLogin = (event) => {
+        event.preventDefault();
+        auth.registerUser(auth.GUEST_USER.firstName, auth.GUEST_USER.lastName, auth.GUEST_USER.username, auth.GUEST_USER.email, auth.GUEST_USER.password, auth.GUEST_USER.passwordVerify)
+        auth.loginUser(auth.GUEST_USER.username, auth.GUEST_USER.password)
+    }; 
+
     return (
         <Box 
             id="splash-screen">
@@ -13,48 +22,46 @@ export default function SplashScreen() {
                 Make lists of your favorite things and share with your friends!
             </Typography>
 
-            <Grid
-                container
-                direction="column"
+            <Typography variant="caption">
+                Developed by Taylor Giles
+            </Typography>
+
+            <Grid container 
+                direction="row"
+                spacing={2} 
                 justifyContent="center"
                 alignItems="center"
-            > 
-                <Grid item container 
-                    spacing={2} 
-                    justifyContent="center"
-                    alignItems="center"
-                >
-                    <Grid item >
-                        <Button 
-                            id="btn_create_account" 
-                            variant="contained"
-                            color="primary"
-                            href="/register/"
-                        >
-                            Create an Account
-                        </Button>
-                    </Grid>
-                    <Grid item >
-                        <Button 
-                            href="/login/" 
-                            color="accent" 
-                            id="btn_login" 
-                            variant="contained"
-                        >
-                            Log In 
-                        </Button>
-                    </Grid>
+            >
+                <Grid item xs='auto'>
+                    <Button 
+                        id="btn_create_account" 
+                        variant="contained"
+                        color="primary"
+                        href="/register/"
+                    >
+                        Create an Account
+                    </Button>
                 </Grid>
-                <Grid item justifyContent="center"
-                alignItems="center">
+                <Grid item xs='auto'>
+                    <Button 
+                        href="/login/" 
+                        color="accent" 
+                        id="btn_login" 
+                        variant="contained"
+                    >
+                        Log In 
+                    </Button>
+                </Grid>
+                <Grid item xs={12}>
                     <Button 
                         color="primary" 
                         id="btn_login_guest" 
                         variant="contained"
+                        onClick={handleGuestLogin}
                     >
-                        Continue as Guest    
-                    </Button>
-                </Grid>
+                    Continue as Guest    
+                </Button>
+            </Grid>
             </Grid>
         </Box>
     )

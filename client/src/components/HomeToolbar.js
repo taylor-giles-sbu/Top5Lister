@@ -28,6 +28,10 @@ export default function HomeToolbar() {
         communityColor = "disabled"
     }
 
+    if(auth.isGuest()){
+        homeColor = "disabled"
+    }
+
     function handleHome() {
         store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME)
     }
@@ -111,7 +115,7 @@ export default function HomeToolbar() {
             <Grid container direction="row" spacing={2} justifyContent="space-between">
                 <Grid container justifyContent="space-around" item md={4} lg={3}>
                     <IconButton 
-                        disabled={store.listToEdit !== null} 
+                        disabled={store.listToEdit !== null || auth.isGuest()} 
                         onClick={handleHome}>
                         <HomeIcon  color={homeColor} fontSize='large'/>
                     </IconButton>

@@ -12,6 +12,7 @@ import Link from '@mui/material/Link';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import AlertDialog from './AlertDialog';
 
 export default function RegisterScreen() {
     const { auth } = useContext(AuthContext);
@@ -31,6 +32,13 @@ export default function RegisterScreen() {
 
     return (
             <Container component="main" maxWidth="xs">
+                <AlertDialog 
+                    open={auth.isError}
+                    title={"Error"}
+                    description={auth.errorText}
+                    buttonText = {"OK"}
+                    onButtonClick = {auth.clearError}
+                />
                 <CssBaseline />
                 <Box
                     sx={{

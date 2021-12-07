@@ -385,15 +385,11 @@ function GlobalStoreContextProvider(props) {
     }
 
     store.filterByName = function (name) {
-        store.updateView(store.currentTab, store.sortType, {function: ((list) => {return list.name.startsWith(name)}), param: name})
+        store.updateView(store.currentTab, store.sortType, {function: ((list) => {return list.name.toUpperCase().startsWith(name.toUpperCase())}), param: name})
     }
 
     store.filterByUser = function (user) {
-        store.updateView(store.currentTab, store.sortType, {function: ((list) => {return list.owner === user}), param: user})
-    }
-
-    store.filterForCommunity = function (name) {
-
+        store.updateView(store.currentTab, store.sortType, {function: ((list) => {return list.owner.toUpperCase() === user.toUpperCase()}), param: user})
     }
 
     store.clearFilter = function(){
@@ -432,6 +428,10 @@ function GlobalStoreContextProvider(props) {
 
     store.isListOwnedByMe = function(list){
         return list.owner === auth.user.username
+    }
+
+    store.getMyLists = function(){
+        return store.lists.filter((list) => {return store.isListOwnedByMe(list)})
     }
 
     store.numLikes = function(list){

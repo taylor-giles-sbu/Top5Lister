@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { Top5Item, CommentItem } from '.';
+import AuthContext from '../auth'
 
 /*
     This is a card in our list of top 5 lists. It lets select
@@ -18,6 +19,7 @@ import { Top5Item, CommentItem } from '.';
     @author McKilla Gorilla
 */
 function ListCard(props) {
+    const {auth} = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
     const [commentText, setCommentText] = useState("");
     const list = props.list;
@@ -77,6 +79,11 @@ function ListCard(props) {
     let likeColor = (store.isListLiked(list)) ? "selection" : "action"
     let dislikeColor = (store.isListDisliked(list)) ? "selection" : "action"
 
+    if(auth.isGuest()){
+        likeColor = "disabled"
+        dislikeColor ="disabled"
+    }
+
     let publish = (list.isPublished) 
         ? (<Typography variant="caption"> {"Published: " + dateString} </Typography>)
         : (<Typography variant="caption" color="red"> {"Not Published"} </Typography>)
@@ -91,7 +98,7 @@ function ListCard(props) {
         ? <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
             <Grid item container justifyContent="center" direction="row">
                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                    <IconButton size="small" onClick={handleLikeList}>
+                    <IconButton size="small" onClick={handleLikeList} disabled={auth.isGuest()}>
                         <ThumbUpIcon color={likeColor}/>
                     </IconButton>
                     <Typography variant="subtitle2">
@@ -99,7 +106,7 @@ function ListCard(props) {
                     </Typography>
                 </Grid>
                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                    <IconButton size="small" onClick={handleDislikeList}>
+                    <IconButton size="small" onClick={handleDislikeList} disabled={auth.isGuest()}>
                         <ThumbDownIcon color={dislikeColor}/>
                     </IconButton>
                     <Typography variant="subtitle2">
@@ -131,7 +138,7 @@ function ListCard(props) {
                         </List>
                     </Grid>
                     <Grid item xs='auto'>
-                        <TextField fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
+                        <TextField disabled={auth.isGuest()} fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
                     </Grid>
                 </Grid>
             </Box>

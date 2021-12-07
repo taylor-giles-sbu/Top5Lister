@@ -20,6 +20,15 @@ function AuthContextProvider(props) {
     });
     const history = useHistory();
 
+    auth.GUEST_USER = {
+        firstName: "<Anonymous>",
+        lastName: "<Anonymous>",
+        username: "<Anonymous>",
+        email: "<Anonymous>",
+        password: "<Anonymous>",
+        passwordVerify: "<Anonymous>"
+    }
+
     useEffect(() => {
         auth.getLoggedIn();
     }, []);
@@ -114,6 +123,10 @@ function AuthContextProvider(props) {
         }
         console.log("user initials: " + initials);
         return initials;
+    }
+
+    auth.isGuest = function(){
+        return (auth.user.username === auth.GUEST_USER.username)
     }
 
     return (

@@ -83,6 +83,7 @@ deleteTop5List = async (req, res) => {
                                         }
                                     }
                                 }
+                                communityList.items.sort((item1, item2) => { return item2.points - item1.points })
                                 if(communityList.items[0].points < 1){
                                     CommunityList.findOneAndDelete({name: list.name}, ()=>{})
                                 } else {
@@ -383,6 +384,7 @@ publishTop5List = async (req, res) => {
                                                 communityList.items.push({item: addedList.items[itemIndex], points: (5-itemIndex)})
                                             }
                                         }
+                                        communityList.items.sort((item1, item2) => { return item2.points - item1.points })
                                         communityList.save()
                                         communityList.numLists++;
                                         listFound = true;

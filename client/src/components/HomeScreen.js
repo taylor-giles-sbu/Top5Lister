@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalStoreContext, HOMESCREEN_TAB_TYPE } from '../store'
-import ListCard from './ListCard.js'
-import CommunityListCard from './CommunityListCard.js'
 import MUIDeleteModal from './MUIDeleteModal'
 import { Box, Button, Typography, Grid } from '@mui/material'
+import AuthContext from '../auth'
 import HomeToolbar from './HomeToolbar'
 import ListWrapper from './ListWrapper'
-import List from '@mui/material/List';
 import AddIcon from '@mui/icons-material/Add';
 
 /*
@@ -14,12 +12,20 @@ import AddIcon from '@mui/icons-material/Add';
     
     @author McKilla Gorilla
 */
-const HomeScreen = () => {
+const HomeScreen = (props) => {
     const { store } = useContext(GlobalStoreContext);
+    const {auth} = useContext(AuthContext);
 
+    
     useEffect(() => {
-        store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME);
+        if(auth.isGuest()){
+            store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_COMMUNITY);
+        } else {
+            store.setCurrentTab(HOMESCREEN_TAB_TYPE.TAB_HOME);
+        }
     }, []);
+    
+    
 
     function handleCreateNewList() {
         store.createNewList();
@@ -32,7 +38,7 @@ const HomeScreen = () => {
             size="large" 
             color="black" 
             startIcon={<AddIcon/>}
-            disabled={store.listToEdit!==null}
+            disabled={store.listToEdit!==null || auth.isGuest()}
             onClick={handleCreateNewList}>
                 Your {store.searchObj.param} Lists
             </Button>

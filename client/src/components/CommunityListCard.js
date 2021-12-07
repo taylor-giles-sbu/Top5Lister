@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { CommunityListItem, CommentItem } from '.';
+import AuthContext from '../auth'
 
 /*
     This is a card in our list of top 5 lists. It lets select
@@ -18,6 +19,7 @@ import { CommunityListItem, CommentItem } from '.';
     @author McKilla Gorilla
 */
 function CommunityListCard(props) {
+    const {auth} = useContext(AuthContext);
     const { store } = useContext(GlobalStoreContext);
     const [commentText, setCommentText] = useState("");
     const list = props.list;
@@ -63,6 +65,11 @@ function CommunityListCard(props) {
     let likeColor = (store.isListLiked(list)) ? "selection" : "action";
     let dislikeColor = (store.isListDisliked(list)) ? "selection" : "action";
 
+    if(auth.isGuest()){
+        likeColor = "disabled"
+        dislikeColor ="disabled"
+    }
+
     let commentItems = list.comments.map((item) => {return <CommentItem comment={item}/>})
     return (
         <Accordion sx={{ bgcolor: backgroundColor}} onChange={handleAccordionChange}>
@@ -80,7 +87,7 @@ function CommunityListCard(props) {
                         <Grid item xs container px={2} direction="column" justifyContent="center" alignItems="flex-end">
                             <Grid item container justifyContent="center" direction="row">
                                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                                    <IconButton size="small" onClick={handleLikeList}>
+                                    <IconButton size="small" onClick={handleLikeList} disabled={auth.isGuest()}>
                                         <ThumbUpIcon color={likeColor}/>
                                     </IconButton>
                                     <Typography variant="subtitle2">
@@ -88,7 +95,7 @@ function CommunityListCard(props) {
                                     </Typography>
                                 </Grid>
                                 <Grid item xs="auto" container px={1} justifyContent="center" alignItems="center" direction="row">
-                                    <IconButton size="small" onClick={handleDislikeList}>
+                                    <IconButton size="small" onClick={handleDislikeList} disabled={auth.isGuest()}>
                                         <ThumbDownIcon color={dislikeColor}/>
                                     </IconButton>
                                     <Typography variant="subtitle2">
@@ -135,7 +142,7 @@ function CommunityListCard(props) {
                                         </List>
                                     </Grid>
                                     <Grid item xs='auto'>
-                                        <TextField fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
+                                        <TextField disabled={auth.isGuest()} fullWidth variant='outlined' label='Add Comment' onChange={handleCommentChange} onKeyDown={handleComment} value={commentText}/>
                                     </Grid>
                                 </Grid>
                             </Box>

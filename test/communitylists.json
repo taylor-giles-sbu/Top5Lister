@@ -1,0 +1,1578 @@
+[{
+  "_id": {
+    "$oid": "61aed9c6e5958a5058dde5c7"
+  },
+  "name": "Animals to Eat",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aed9c6e5958a5058dde5cb"
+      },
+      "item": "Chicken",
+      "points": 26
+    },
+    {
+      "_id": {
+        "$oid": "61aed9c6e5958a5058dde5c9"
+      },
+      "item": "Cow",
+      "points": 17
+    },
+    {
+      "_id": {
+        "$oid": "61aeda89e5958a5058dde670"
+      },
+      "item": "Fish",
+      "points": 15
+    },
+    {
+      "_id": {
+        "$oid": "61aed9c6e5958a5058dde5ca"
+      },
+      "item": "Pig",
+      "points": 11
+    },
+    {
+      "_id": {
+        "$oid": "61aeda89e5958a5058dde671"
+      },
+      "item": "Lamb",
+      "points": 8
+    },
+    {
+      "_id": {
+        "$oid": "61aed9c6e5958a5058dde5c8"
+      },
+      "item": "Lobster",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedbb8e5958a5058dde7a6"
+      },
+      "item": "Bird",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aeda89e5958a5058dde672"
+      },
+      "item": "Goat",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aeda89e5958a5058dde673"
+      },
+      "item": "Shrimp",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee13ea8502157d0205515"
+      },
+      "item": "Beef",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aed9c6e5958a5058dde5cc"
+      },
+      "item": "Salmon",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedd8de5958a5058dde909"
+      },
+      "item": "Duck",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee460a8502157d020585b"
+      },
+      "item": "Turkey",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedb50e5958a5058dde754"
+      },
+      "user": "adit",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedc33e5958a5058dde89f"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede89e5958a5058ddea62"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf73e5958a5058ddec24"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee37aa8502157d02057a3"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cba8502157d0205aa8"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedb4fe5958a5058dde74e"
+      },
+      "user": "adit",
+      "content": "These are some yummy animals"
+    },
+    {
+      "_id": {
+        "$oid": "61aedc49e5958a5058dde8bf"
+      },
+      "user": "dwoo",
+      "content": "I dont like to eat animals"
+    }
+  ],
+  "views": 7,
+  "numLists": 7,
+  "createdAt": {
+    "$date": "2021-12-07T03:49:26.877Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:16.714Z"
+  },
+  "__v": 13
+},{
+  "_id": {
+    "$oid": "61aed9e9e5958a5058dde5e8"
+  },
+  "name": "Games",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aeddc6e5958a5058dde940"
+      },
+      "item": "League of Legends",
+      "points": 6
+    },
+    {
+      "_id": {
+        "$oid": "61aed9e9e5958a5058dde5e9"
+      },
+      "item": "StarCraft",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee1a1a8502157d020558d"
+      },
+      "item": "Super Smash Bros Melee",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee49aa8502157d02058b6"
+      },
+      "item": "Outer Wilds",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aed9e9e5958a5058dde5ea"
+      },
+      "item": "Fallout 3",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aeddc6e5958a5058dde941"
+      },
+      "item": "Hollow Knight",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee1a1a8502157d020558e"
+      },
+      "item": "Skyrim",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee49aa8502157d02058b7"
+      },
+      "item": "Apex Legends",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aed9e9e5958a5058dde5eb"
+      },
+      "item": "Civilization II",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aeddc6e5958a5058dde942"
+      },
+      "item": "Valorant",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee1a1a8502157d020558f"
+      },
+      "item": "Halo 3",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee49aa8502157d02058b8"
+      },
+      "item": "Stardew Valley",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aed9e9e5958a5058dde5ec"
+      },
+      "item": "Katamari Damacy",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aeddc6e5958a5058dde943"
+      },
+      "item": "Pokemon",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee1a1a8502157d0205590"
+      },
+      "item": "Halo Reach",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aeddc6e5958a5058dde944"
+      },
+      "item": "Minecraft",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee49aa8502157d02058b9"
+      },
+      "item": "Portal 2",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aed9e9e5958a5058dde5ed"
+      },
+      "item": "Super Mario World",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede92e5958a5058ddea8c"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf74e5958a5058ddec30"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee37ba8502157d02057a9"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cca8502157d0205aae"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aeda45e5958a5058dde646"
+      },
+      "user": "shmoeyjoey",
+      "content": "This is a great list"
+    },
+    {
+      "_id": {
+        "$oid": "61aee5e1a8502157d0205aee"
+      },
+      "user": "tagiles",
+      "content": "Outer Wilds is a great game"
+    }
+  ],
+  "views": 9,
+  "numLists": 4,
+  "createdAt": {
+    "$date": "2021-12-07T03:50:01.127Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:15.183Z"
+  },
+  "__v": 9
+},{
+  "_id": {
+    "$oid": "61aeda0ce5958a5058dde609"
+  },
+  "name": "Pink Floyd Songs",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aeda0ce5958a5058dde60d"
+      },
+      "item": "Time",
+      "points": 6
+    },
+    {
+      "_id": {
+        "$oid": "61aeda0ce5958a5058dde60a"
+      },
+      "item": "Shine On You Crazy Diamond",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee1d5a8502157d02055cb"
+      },
+      "item": "Money",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aeda0ce5958a5058dde60b"
+      },
+      "item": "Comfortably Numb",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aeda0ce5958a5058dde60c"
+      },
+      "item": "Pigs (Three Different Ones)",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee1d5a8502157d02055cc"
+      },
+      "item": "Brain Damage",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee1d5a8502157d02055cd"
+      },
+      "item": "Eclipse",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aeda0ce5958a5058dde60e"
+      },
+      "item": "Echoes",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aee1d5a8502157d02055ce"
+      },
+      "item": "Wish You Were Here",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedb5fe5958a5058dde76c"
+      },
+      "user": "adit",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedc2fe5958a5058dde887"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede8be5958a5058ddea68"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf74e5958a5058ddec2a"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee37ea8502157d02057bb"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cca8502157d0205ab4"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aeda40e5958a5058dde63c"
+      },
+      "user": "shmoeyjoey",
+      "content": "I love these songs!"
+    },
+    {
+      "_id": {
+        "$oid": "61aedb5ee5958a5058dde766"
+      },
+      "user": "adit",
+      "content": "Boooo! These are bad songs"
+    },
+    {
+      "_id": {
+        "$oid": "61aee0e4a8502157d02054db"
+      },
+      "user": "jattam",
+      "content": "nice"
+    }
+  ],
+  "views": 5,
+  "numLists": 2,
+  "createdAt": {
+    "$date": "2021-12-07T03:50:36.165Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:44.717Z"
+  },
+  "__v": 10
+},{
+  "_id": {
+    "$oid": "61aedaace5958a5058dde68f"
+  },
+  "name": "Books",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aedaace5958a5058dde690"
+      },
+      "item": "How to Kill a Mockingbird",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee15da8502157d0205531"
+      },
+      "item": "1984",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedaace5958a5058dde691"
+      },
+      "item": "The Chosen",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee15da8502157d0205532"
+      },
+      "item": "Grapes of Wrath",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedaace5958a5058dde692"
+      },
+      "item": "Wuthering Heights",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee15da8502157d0205533"
+      },
+      "item": "Godel Escher Bach",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedaace5958a5058dde693"
+      },
+      "item": "Harry Potter",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee15da8502157d0205534"
+      },
+      "item": "Flash Boys",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedaace5958a5058dde694"
+      },
+      "item": "Diary of a Wimpy Kid",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aee15da8502157d0205535"
+      },
+      "item": "The Catcher in the Rye",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc34e5958a5058dde8a5"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede8be5958a5058ddea6e"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee37ca8502157d02057af"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cda8502157d0205aba"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedfaae5958a5058ddec62"
+      },
+      "user": "jattam",
+      "content": "I like Harry Potter"
+    }
+  ],
+  "views": 5,
+  "numLists": 2,
+  "createdAt": {
+    "$date": "2021-12-07T03:53:16.068Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:24.952Z"
+  },
+  "__v": 6
+},{
+  "_id": {
+    "$oid": "61aedacbe5958a5058dde6ac"
+  },
+  "name": "Countries to Visit",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aedbcee5958a5058dde7c4"
+      },
+      "item": "Japan",
+      "points": 16
+    },
+    {
+      "_id": {
+        "$oid": "61aedbcee5958a5058dde7c3"
+      },
+      "item": "Korea",
+      "points": 12
+    },
+    {
+      "_id": {
+        "$oid": "61aee170a8502157d0205551"
+      },
+      "item": "Switzerland",
+      "points": 10
+    },
+    {
+      "_id": {
+        "$oid": "61aedda6e5958a5058dde926"
+      },
+      "item": "France",
+      "points": 8
+    },
+    {
+      "_id": {
+        "$oid": "61aedacbe5958a5058dde6ad"
+      },
+      "item": "Saudi Arabia",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedbcee5958a5058dde7c2"
+      },
+      "item": "Taiwan",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedacbe5958a5058dde6ae"
+      },
+      "item": "Palestine",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedda6e5958a5058dde925"
+      },
+      "item": "Germany",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee170a8502157d0205552"
+      },
+      "item": "Iran",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedacbe5958a5058dde6af"
+      },
+      "item": "Pakistan",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedee7e5958a5058ddeacf"
+      },
+      "item": "Singapore",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee472a8502157d0205877"
+      },
+      "item": "Finland",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedacbe5958a5058dde6b0"
+      },
+      "item": "Iraq",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedbcee5958a5058dde7c5"
+      },
+      "item": "United States",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedbcee5958a5058dde7c6"
+      },
+      "item": "Sweden",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee170a8502157d0205553"
+      },
+      "item": "China",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee472a8502157d0205878"
+      },
+      "item": "Norway",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedacbe5958a5058dde6b1"
+      },
+      "item": "Turkey",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aedee7e5958a5058ddead0"
+      },
+      "item": "England",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aee472a8502157d0205879"
+      },
+      "item": "Italy",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc34e5958a5058dde8ab"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede94e5958a5058ddea92"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf75e5958a5058ddec36"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee37ca8502157d02057b5"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cea8502157d0205ac0"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedc53e5958a5058dde8c9"
+      },
+      "user": "dwoo",
+      "content": "Pakistan is lovely this time of year"
+    },
+    {
+      "_id": {
+        "$oid": "61aee408a8502157d0205810"
+      },
+      "user": "qjafri",
+      "content": "I like countries"
+    },
+    {
+      "_id": {
+        "$oid": "61aee408a8502157d0205817"
+      },
+      "user": "qjafri",
+      "content": "Countries are great"
+    },
+    {
+      "_id": {
+        "$oid": "61aee421a8502157d0205839"
+      },
+      "user": "qjafri",
+      "content": "Yayyyyyy countries"
+    },
+    {
+      "_id": {
+        "$oid": "61aee5eda8502157d0205af8"
+      },
+      "user": "tagiles",
+      "content": "I like countries too"
+    }
+  ],
+  "views": 8,
+  "numLists": 6,
+  "createdAt": {
+    "$date": "2021-12-07T03:53:47.863Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:41:17.727Z"
+  },
+  "__v": 15
+},{
+  "_id": {
+    "$oid": "61aedadee5958a5058dde6d1"
+  },
+  "name": "Foods",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aedef9e5958a5058ddeaeb"
+      },
+      "item": "Pizza",
+      "points": 9
+    },
+    {
+      "_id": {
+        "$oid": "61aedadee5958a5058dde6d2"
+      },
+      "item": "Gyro",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedadee5958a5058dde6d5"
+      },
+      "item": "Biryani",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedef9e5958a5058ddeaea"
+      },
+      "item": "Spaghetti",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedadee5958a5058dde6d3"
+      },
+      "item": "Burger",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee186a8502157d020556d"
+      },
+      "item": "Nihari",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedadee5958a5058dde6d4"
+      },
+      "item": "Ice Cream",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedadee5958a5058dde6d6"
+      },
+      "item": "Sushi",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedef9e5958a5058ddeaec"
+      },
+      "item": "Burgers",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee186a8502157d020556e"
+      },
+      "item": "Pasta",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedef9e5958a5058ddeaed"
+      },
+      "item": "Tacos",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aee186a8502157d020556f"
+      },
+      "item": "Chickpeas",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc30e5958a5058dde88d"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede8ce5958a5058ddea74"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf76e5958a5058ddec3c"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee37fa8502157d02057c1"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cfa8502157d0205ac6"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedf8be5958a5058ddec58"
+      },
+      "user": "jattam",
+      "content": "Gyro is yummy"
+    }
+  ],
+  "views": 4,
+  "numLists": 3,
+  "createdAt": {
+    "$date": "2021-12-07T03:54:06.672Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:47.174Z"
+  },
+  "__v": 8
+},{
+  "_id": {
+    "$oid": "61aedb07e5958a5058dde702"
+  },
+  "name": "Movies",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aedb07e5958a5058dde703"
+      },
+      "item": "Your Nmae",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee1bea8502157d02055ac"
+      },
+      "item": "The Godfather",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedb07e5958a5058dde704"
+      },
+      "item": "Dark Knight",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedb07e5958a5058dde707"
+      },
+      "item": "Interstellar",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee1bea8502157d02055ad"
+      },
+      "item": "Dune",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedb07e5958a5058dde705"
+      },
+      "item": "Harry Potter",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedb07e5958a5058dde706"
+      },
+      "item": "Inception",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee1bea8502157d02055ae"
+      },
+      "item": "Parasite",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee1bea8502157d02055af"
+      },
+      "item": "Rush Hour 2",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedb6ae5958a5058dde77c"
+      },
+      "user": "adit",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedc30e5958a5058dde893"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede8ce5958a5058ddea7a"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf76e5958a5058ddec42"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee380a8502157d02057c7"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee5cfa8502157d0205acc"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedb69e5958a5058dde776"
+      },
+      "user": "adit",
+      "content": "I hate these movies"
+    },
+    {
+      "_id": {
+        "$oid": "61aedc5fe5958a5058dde8d3"
+      },
+      "user": "dwoo",
+      "content": "WOW!"
+    },
+    {
+      "_id": {
+        "$oid": "61aee601a8502157d0205b02"
+      },
+      "user": "tagiles",
+      "content": "Interstellar is a nice movie"
+    }
+  ],
+  "views": 4,
+  "numLists": 2,
+  "createdAt": {
+    "$date": "2021-12-07T03:54:47.660Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:41:37.498Z"
+  },
+  "__v": 10
+},{
+  "_id": {
+    "$oid": "61aedb37e5958a5058dde723"
+  },
+  "name": "TV Shows",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aedb37e5958a5058dde724"
+      },
+      "item": "Bing Bang Theory",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedbfce5958a5058dde803"
+      },
+      "item": "Avatar",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee219a8502157d0205627"
+      },
+      "item": "The Sopranos",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aedb37e5958a5058dde725"
+      },
+      "item": "Spongebob",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedbfce5958a5058dde804"
+      },
+      "item": "The Office",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee219a8502157d0205628"
+      },
+      "item": "Breaking Bad",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aedb37e5958a5058dde726"
+      },
+      "item": "Parasyte",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedbfce5958a5058dde805"
+      },
+      "item": "Rick and Morty",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee219a8502157d0205629"
+      },
+      "item": "Curb Your Enthusiasm",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aedb37e5958a5058dde727"
+      },
+      "item": "Mob Psycho",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedbfce5958a5058dde806"
+      },
+      "item": "South Park",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee219a8502157d020562a"
+      },
+      "item": "It's Always Sunny in Philadelphia",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedb37e5958a5058dde728"
+      },
+      "item": "Star Trek",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aedbfce5958a5058dde807"
+      },
+      "item": "?",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aee219a8502157d020562b"
+      },
+      "item": "Better Call Saul",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede8ee5958a5058ddea80"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf77e5958a5058ddec48"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee380a8502157d02057cd"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee5d1a8502157d0205ad2"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee60da8502157d0205b0c"
+      },
+      "user": "tagiles",
+      "content": "Bing Bang Theory is bad"
+    }
+  ],
+  "views": 2,
+  "numLists": 3,
+  "createdAt": {
+    "$date": "2021-12-07T03:55:35.043Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:28.208Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aedbe5e5958a5058dde7e2"
+  },
+  "name": "Programming Languages",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aede00e5958a5058dde962"
+      },
+      "item": "Java",
+      "points": 13
+    },
+    {
+      "_id": {
+        "$oid": "61aedbe5e5958a5058dde7e4"
+      },
+      "item": "Python",
+      "points": 12
+    },
+    {
+      "_id": {
+        "$oid": "61aedbe5e5958a5058dde7e5"
+      },
+      "item": "Haskell",
+      "points": 8
+    },
+    {
+      "_id": {
+        "$oid": "61aede00e5958a5058dde963"
+      },
+      "item": "JavaScript",
+      "points": 8
+    },
+    {
+      "_id": {
+        "$oid": "61aedbe5e5958a5058dde7e3"
+      },
+      "item": "C++",
+      "points": 7
+    },
+    {
+      "_id": {
+        "$oid": "61aede00e5958a5058dde964"
+      },
+      "item": "C",
+      "points": 7
+    },
+    {
+      "_id": {
+        "$oid": "61aedbe5e5958a5058dde7e6"
+      },
+      "item": "MIPS",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aedbe5e5958a5058dde7e7"
+      },
+      "item": "LaTeX",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aede00e5958a5058dde965"
+      },
+      "item": "Dart",
+      "points": 1
+    },
+    {
+      "_id": {
+        "$oid": "61aee1eaa8502157d02055ea"
+      },
+      "item": "TypeScript",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc31e5958a5058dde899"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede8ee5958a5058ddea86"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf78e5958a5058ddec4e"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee382a8502157d02057d3"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee5d2a8502157d0205ad8"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedc41e5958a5058dde8b5"
+      },
+      "user": "dwoo",
+      "content": "I love programming <3"
+    }
+  ],
+  "views": 3,
+  "numLists": 4,
+  "createdAt": {
+    "$date": "2021-12-07T03:58:29.433Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:50.540Z"
+  },
+  "__v": 8
+},{
+  "_id": {
+    "$oid": "61aee1faa8502157d0205606"
+  },
+  "name": "Sports Teams",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aee1faa8502157d0205607"
+      },
+      "item": "Lakers",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee1faa8502157d0205608"
+      },
+      "item": "Giants",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee1faa8502157d0205609"
+      },
+      "item": "Yankees",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee1faa8502157d020560a"
+      },
+      "item": "Jets",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee1faa8502157d020560b"
+      },
+      "item": "Bills",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee383a8502157d02057d9"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee5d4a8502157d0205ade"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee407a8502157d020580c"
+      },
+      "user": "qjafri",
+      "content": "Yay Sports"
+    }
+  ],
+  "views": 2,
+  "numLists": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:24:26.815Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:08.044Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee484a8502157d0205895"
+  },
+  "name": "Food",
+  "items": [
+    {
+      "_id": {
+        "$oid": "61aee484a8502157d0205896"
+      },
+      "item": "Chocolate",
+      "points": 5
+    },
+    {
+      "_id": {
+        "$oid": "61aee484a8502157d0205897"
+      },
+      "item": "Rice",
+      "points": 4
+    },
+    {
+      "_id": {
+        "$oid": "61aee484a8502157d0205898"
+      },
+      "item": "Chicken Parmesan",
+      "points": 3
+    },
+    {
+      "_id": {
+        "$oid": "61aee484a8502157d0205899"
+      },
+      "item": "Meatballs",
+      "points": 2
+    },
+    {
+      "_id": {
+        "$oid": "61aee484a8502157d020589a"
+      },
+      "item": "Pasta",
+      "points": 1
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee5d4a8502157d0205ae4"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "comments": [],
+  "views": 0,
+  "numLists": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:35:16.615Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:52.708Z"
+  },
+  "__v": 1
+}]

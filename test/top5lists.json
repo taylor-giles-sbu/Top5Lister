@@ -1,0 +1,2012 @@
+[{
+  "_id": {
+    "$oid": "61aed9b5e5958a5058dde5b1"
+  },
+  "items": [
+    "Lobster",
+    "Cow",
+    "Pig",
+    "Chicken",
+    "Salmon"
+  ],
+  "name": "Animals to Eat",
+  "owner": "shmoeyjoey",
+  "isPublished": true,
+  "datePublished": 1638848966865,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aede55e5958a5058ddea1c"
+      },
+      "user": "mattjb01",
+      "content": "I like this list of animals even better than adit's"
+    },
+    {
+      "_id": {
+        "$oid": "61aee526a8502157d0205a1b"
+      },
+      "user": "tagiles",
+      "content": "This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long comment"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc20e5958a5058dde825"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede2fe5958a5058dde9d8"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf28e5958a5058ddeb8b"
+      },
+      "user": "jattam",
+      "liked": true
+    }
+  ],
+  "views": 3,
+  "createdAt": {
+    "$date": "2021-12-07T03:49:09.585Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:58.023Z"
+  },
+  "__v": 6
+},{
+  "_id": {
+    "$oid": "61aed9cbe5958a5058dde5d2"
+  },
+  "items": [
+    "StarCraft",
+    "Fallout 3",
+    "Civilization II",
+    "Katamari Damacy",
+    "Super Mario World"
+  ],
+  "name": "Games",
+  "owner": "shmoeyjoey",
+  "isPublished": true,
+  "datePublished": 1638849001115,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee2b8a8502157d020571e"
+      },
+      "user": "qjafri",
+      "content": "I love StarCraft"
+    },
+    {
+      "_id": {
+        "$oid": "61aee550a8502157d0205a29"
+      },
+      "user": "tagiles",
+      "content": "Outer Wilds is the best game ever!"
+    },
+    {
+      "_id": {
+        "$oid": "61aee55aa8502157d0205a46"
+      },
+      "user": "tagiles",
+      "content": "It should be on this list."
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede30e5958a5058dde9e0"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf27e5958a5058ddeb83"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee552a8502157d0205a31"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 4,
+  "createdAt": {
+    "$date": "2021-12-07T03:49:31.806Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:38:52.810Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aed9eae5958a5058dde5f3"
+  },
+  "items": [
+    "Shine On You Crazy Diamond",
+    "Comfortably Numb",
+    "Pigs (Three Different Ones)",
+    "Time",
+    "Echoes"
+  ],
+  "name": "Pink Floyd Songs",
+  "owner": "shmoeyjoey",
+  "isPublished": true,
+  "datePublished": 1638849036145,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee508a8502157d0205a0d"
+      },
+      "user": "tagiles",
+      "content": "Pink Floyd is a good band"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc21e5958a5058dde82d"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede30e5958a5058dde9e8"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf29e5958a5058ddeb93"
+      },
+      "user": "jattam",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:50:02.500Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:28.033Z"
+  },
+  "__v": 5
+},{
+  "_id": {
+    "$oid": "61aeda0de5958a5058dde614"
+  },
+  "items": [
+    "Raiders of the Lost Ark",
+    "Goodfellas",
+    "Airplane!",
+    "Lawrence of Arabia",
+    "Pulp Fiction"
+  ],
+  "name": "Movies",
+  "owner": "shmoeyjoey",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T03:50:37.922Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:51:09.087Z"
+  },
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "61aeda77e5958a5058dde65a"
+  },
+  "items": [
+    "Fish",
+    "Chicken",
+    "Lamb",
+    "Goat",
+    "Shrimp"
+  ],
+  "name": "Animals to Eat",
+  "owner": "adit",
+  "isPublished": true,
+  "datePublished": 1638849161603,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aede46e5958a5058ddea0e"
+      },
+      "user": "mattjb01",
+      "content": "I like this list of animals"
+    },
+    {
+      "_id": {
+        "$oid": "61aee3a9a8502157d02057ed"
+      },
+      "user": "qjafri",
+      "content": "Who puts fish above terrestrial meat?!? Outrageous!!"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc22e5958a5058dde835"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede2be5958a5058dde9b9"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf2ae5958a5058ddeb9b"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee376a8502157d0205799"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4f9a8502157d02059fb"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 2,
+  "createdAt": {
+    "$date": "2021-12-07T03:52:23.079Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:13.866Z"
+  },
+  "__v": 8
+},{
+  "_id": {
+    "$oid": "61aeda8ae5958a5058dde679"
+  },
+  "items": [
+    "How to Kill a Mockingbird",
+    "The Chosen",
+    "Wuthering Heights",
+    "Harry Potter",
+    "Diary of a Wimpy Kid"
+  ],
+  "name": "Books",
+  "owner": "adit",
+  "isPublished": true,
+  "datePublished": 1638849196034,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee333a8502157d0205748"
+      },
+      "user": "qjafri",
+      "content": "This is some... YA literature"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc24e5958a5058dde845"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede2ae5958a5058dde9b1"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf2ae5958a5058ddeba3"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee283a8502157d0205710"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4f8a8502157d02059f7"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:52:42.656Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:12.843Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aedab7e5958a5058dde69a"
+  },
+  "items": [
+    "Saudi Arabia",
+    "Palestine",
+    "Pakistan",
+    "Iraq",
+    "Turkey"
+  ],
+  "name": "Countries to Visit",
+  "owner": "adit",
+  "isPublished": true,
+  "datePublished": 1638849227806,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedf43e5958a5058ddebe1"
+      },
+      "user": "jattam",
+      "content": "I like Turkey"
+    },
+    {
+      "_id": {
+        "$oid": "61aee2dfa8502157d020573a"
+      },
+      "user": "qjafri",
+      "content": "??????????????"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc24e5958a5058dde83d"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede29e5958a5058dde9a9"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf3ae5958a5058ddebd3"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee282a8502157d0205708"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4f7a8502157d02059eb"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 2,
+  "createdAt": {
+    "$date": "2021-12-07T03:53:27.272Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:11.622Z"
+  },
+  "__v": 8
+},{
+  "_id": {
+    "$oid": "61aedacfe5958a5058dde6bb"
+  },
+  "items": [
+    "Gyro",
+    "Burger",
+    "Ice Cream",
+    "Biryani",
+    "Sushi"
+  ],
+  "name": "Foods",
+  "owner": "adit",
+  "isPublished": true,
+  "datePublished": 1638849246649,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee2cea8502157d020572c"
+      },
+      "user": "qjafri",
+      "content": "This is acceptable."
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc25e5958a5058dde855"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede35e5958a5058ddea00"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf39e5958a5058ddebcb"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee374a8502157d020578a"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4f7a8502157d02059e7"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:53:51.177Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:11.590Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aedadfe5958a5058dde6dc"
+  },
+  "items": [
+    "Legend of Xedla",
+    "SSB",
+    "Legend of Xedla",
+    "?",
+    "?"
+  ],
+  "name": "Games",
+  "owner": "adit",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T03:54:07.864Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:54:24.842Z"
+  },
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "61aedaf3e5958a5058dde6ec"
+  },
+  "items": [
+    "Your Nmae",
+    "Dark Knight",
+    "Harry Potter",
+    "Inception",
+    "Interstellar"
+  ],
+  "name": "Movies",
+  "owner": "adit",
+  "isPublished": true,
+  "datePublished": 1638849287632,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc25e5958a5058dde84d"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede2de5958a5058dde9c8"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf37e5958a5058ddebc3"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee373a8502157d0205782"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4f6a8502157d02059df"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:54:27.290Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:02.783Z"
+  },
+  "__v": 6
+},{
+  "_id": {
+    "$oid": "61aedb0ce5958a5058dde70d"
+  },
+  "items": [
+    "Bing Bang Theory",
+    "Spongebob",
+    "Parasyte",
+    "Mob Psycho",
+    "Star Trek"
+  ],
+  "name": "TV Shows",
+  "owner": "adit",
+  "isPublished": true,
+  "datePublished": 1638849334955,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aede61e5958a5058ddea2a"
+      },
+      "user": "mattjb01",
+      "content": "The Bing Bang Theory is bad."
+    },
+    {
+      "_id": {
+        "$oid": "61aee343a8502157d0205756"
+      },
+      "user": "qjafri",
+      "content": "^^^^^\\"
+    },
+    {
+      "_id": {
+        "$oid": "61aee34fa8502157d020575e"
+      },
+      "user": "qjafri",
+      "content": "Bing Bang Theory sucks!"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc28e5958a5058dde865"
+      },
+      "user": "dwoo",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aede2de5958a5058dde9d0"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf26e5958a5058ddeb7b"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee360a8502157d020576c"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4f5a8502157d02059d7"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 4,
+  "createdAt": {
+    "$date": "2021-12-07T03:54:52.232Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:37:09.379Z"
+  },
+  "__v": 9
+},{
+  "_id": {
+    "$oid": "61aedb38e5958a5058dde72e"
+  },
+  "items": [
+    "?",
+    "?",
+    "?",
+    "?",
+    "?"
+  ],
+  "name": "Untitled7",
+  "owner": "adit",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T03:55:36.868Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:55:36.868Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61aedba8e5958a5058dde790"
+  },
+  "items": [
+    "Bird",
+    "Fish",
+    "Cow",
+    "Pig",
+    "Goat"
+  ],
+  "name": "Animals to Eat",
+  "owner": "dwoo",
+  "isPublished": true,
+  "datePublished": 1638849464064,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee56ea8502157d0205a5a"
+      },
+      "user": "tagiles",
+      "content": "Bird?"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc27e5958a5058dde85d"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf25e5958a5058ddeb6b"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4eba8502157d02059cf"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:57:28.552Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:39:10.162Z"
+  },
+  "__v": 5
+},{
+  "_id": {
+    "$oid": "61aedbb9e5958a5058dde7ac"
+  },
+  "items": [
+    "Taiwan",
+    "Korea",
+    "Japan",
+    "United States",
+    "Sweden"
+  ],
+  "name": "Countries to Visit",
+  "owner": "dwoo",
+  "isPublished": true,
+  "datePublished": 1638849486047,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aede68e5958a5058ddea38"
+      },
+      "user": "mattjb01",
+      "content": "YAY JAPAN"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc2ae5958a5058dde87d"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede34e5958a5058dde9f8"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf26e5958a5058ddeb73"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee27fa8502157d0205700"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4eaa8502157d02059c3"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:57:45.115Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:58.074Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aedbcfe5958a5058dde7cc"
+  },
+  "items": [
+    "C++",
+    "Python",
+    "Haskell",
+    "MIPS",
+    "LaTeX"
+  ],
+  "name": "Programming Languages",
+  "owner": "dwoo",
+  "isPublished": true,
+  "datePublished": 1638849509381,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc29e5958a5058dde875"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede33e5958a5058dde9f0"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf22e5958a5058ddeb54"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee27ea8502157d02056f8"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4eaa8502157d02059bf"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:58:07.587Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:58.032Z"
+  },
+  "__v": 6
+},{
+  "_id": {
+    "$oid": "61aedbe8e5958a5058dde7ed"
+  },
+  "items": [
+    "Avatar",
+    "The Office",
+    "Rick and Morty",
+    "South Park",
+    "?"
+  ],
+  "name": "TV Shows",
+  "owner": "dwoo",
+  "isPublished": true,
+  "datePublished": 1638849532471,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedf5ee5958a5058ddec12"
+      },
+      "user": "jattam",
+      "content": "Yay Avatar!"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedc29e5958a5058dde86d"
+      },
+      "user": "dwoo",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aede28e5958a5058dde9a1"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf60e5958a5058ddec1a"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee27ca8502157d02056f0"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4e8a8502157d02059b7"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T03:58:32.723Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:56.836Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aedc03e5958a5058dde80d"
+  },
+  "items": [
+    "Wind Waker",
+    "Breath of the Wild",
+    "Skyward jfklds;ajfklds;a",
+    "jfklds;a",
+    "jkflds;ajkfl;dsa"
+  ],
+  "name": "Games",
+  "owner": "dwoo",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T03:58:59.632Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T03:59:16.557Z"
+  },
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "61aedd7ee5958a5058dde8f3"
+  },
+  "items": [
+    "Chicken",
+    "Cow",
+    "Pig",
+    "Lamb",
+    "Duck"
+  ],
+  "name": "Animals to Eat",
+  "owner": "mattjb01",
+  "isPublished": true,
+  "datePublished": 1638849933038,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede25e5958a5058dde995"
+      },
+      "user": "mattjb01",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aedf23e5958a5058ddeb5c"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4e7a8502157d02059af"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:05:18.412Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:39:27.581Z"
+  },
+  "__v": 4
+},{
+  "_id": {
+    "$oid": "61aedd8ee5958a5058dde90f"
+  },
+  "items": [
+    "Japan",
+    "Germany",
+    "Korea",
+    "France",
+    "Sweden"
+  ],
+  "name": "Countries to Visit",
+  "owner": "mattjb01",
+  "isPublished": true,
+  "datePublished": 1638849958080,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede25e5958a5058dde98d"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf2fe5958a5058ddebbb"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee279a8502157d02056e8"
+      },
+      "user": "qjafri",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:05:34.164Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:26:33.296Z"
+  },
+  "__v": 4
+},{
+  "_id": {
+    "$oid": "61aedda8e5958a5058dde92c"
+  },
+  "items": [
+    "League of Legends",
+    "Hollow Knight",
+    "Valorant",
+    "Pokemon",
+    "Minecraft"
+  ],
+  "name": "Games",
+  "owner": "mattjb01",
+  "isPublished": true,
+  "datePublished": 1638849989938,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aedf4ee5958a5058ddebfc"
+      },
+      "user": "jattam",
+      "content": "Valorant is great"
+    },
+    {
+      "_id": {
+        "$oid": "61aedf54e5958a5058ddec04"
+      },
+      "user": "jattam",
+      "content": "But Minecraft sucks!"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede24e5958a5058dde985"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf2ee5958a5058ddebb3"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee278a8502157d02056e0"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4e0a8502157d0205997"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:06:00.065Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:48.900Z"
+  },
+  "__v": 7
+},{
+  "_id": {
+    "$oid": "61aedde9e5958a5058dde94c"
+  },
+  "items": [
+    "Java",
+    "JavaScript",
+    "Python",
+    "C",
+    "Dart"
+  ],
+  "name": "Programming Languages",
+  "owner": "mattjb01",
+  "isPublished": true,
+  "datePublished": 1638850048745,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aede24e5958a5058dde97d"
+      },
+      "user": "mattjb01",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aedf2de5958a5058ddebab"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4dfa8502157d020598f"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:07:05.259Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:47.687Z"
+  },
+  "__v": 4
+},{
+  "_id": {
+    "$oid": "61aede02e5958a5058dde96b"
+  },
+  "items": [
+    "Game of Thrones",
+    "Avatar",
+    "AoT",
+    "Stars Align",
+    "Promised Neverland"
+  ],
+  "name": "TV Shows",
+  "owner": "mattjb01",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:07:30.530Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:07:56.572Z"
+  },
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "61aedec0e5958a5058ddea9e"
+  },
+  "items": [
+    "Chicken",
+    "Fish",
+    "Shrimp",
+    "Cow",
+    "Duck"
+  ],
+  "name": "Animals to Eat",
+  "owner": "jattam",
+  "isPublished": true,
+  "datePublished": 1638850257673,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedf20e5958a5058ddeb46"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee276a8502157d02056d8"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4e1a8502157d020599f"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:10:40.657Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:49.077Z"
+  },
+  "__v": 4
+},{
+  "_id": {
+    "$oid": "61aeded4e5958a5058ddeab9"
+  },
+  "items": [
+    "Japan",
+    "Korea",
+    "Singapore",
+    "France",
+    "England"
+  ],
+  "name": "Countries to Visit",
+  "owner": "jattam",
+  "isPublished": true,
+  "datePublished": 1638850279607,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedf1fe5958a5058ddeb3e"
+      },
+      "user": "jattam",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee274a8502157d02056d0"
+      },
+      "user": "qjafri",
+      "liked": false
+    },
+    {
+      "_id": {
+        "$oid": "61aee4e2a8502157d02059a7"
+      },
+      "user": "tagiles",
+      "liked": false
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:11:00.724Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:16.266Z"
+  },
+  "__v": 4
+},{
+  "_id": {
+    "$oid": "61aedee8e5958a5058ddead6"
+  },
+  "items": [
+    "Spaghetti",
+    "Pizza",
+    "Burgers",
+    "Sushi",
+    "Tacos"
+  ],
+  "name": "Foods",
+  "owner": "jattam",
+  "isPublished": true,
+  "datePublished": 1638850297167,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee273a8502157d02056c8"
+      },
+      "user": "qjafri",
+      "liked": true
+    }
+  ],
+  "views": 3,
+  "createdAt": {
+    "$date": "2021-12-07T04:11:20.842Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:44.439Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aedefae5958a5058ddeaf5"
+  },
+  "items": [
+    "Java",
+    "JavaScript",
+    "Python",
+    "C++",
+    "Haskell"
+  ],
+  "name": "Programming Languages",
+  "owner": "jattam",
+  "isPublished": true,
+  "datePublished": 1638850319716,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aedf1fe5958a5058ddeb36"
+      },
+      "user": "jattam",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee272a8502157d02056c0"
+      },
+      "user": "qjafri",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:11:38.270Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:26:26.722Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aedf11e5958a5058ddeb10"
+  },
+  "items": [
+    "?",
+    "?",
+    "?",
+    "?",
+    "?"
+  ],
+  "name": "Untitled4",
+  "owner": "jattam",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:12:01.167Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:12:01.167Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61aedf16e5958a5058ddeb20"
+  },
+  "items": [
+    "?",
+    "?",
+    "?",
+    "?",
+    "?"
+  ],
+  "name": "Untitled4",
+  "owner": "jattam",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:12:06.693Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:12:10Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61aee12ca8502157d02054ff"
+  },
+  "items": [
+    "Chicken",
+    "Beef",
+    "Lamb",
+    "Salmon",
+    "Goat"
+  ],
+  "name": "Animals to Eat",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638850878936,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4b1a8502157d0205929"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:21:00.822Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:01.419Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aee140a8502157d020551b"
+  },
+  "items": [
+    "1984",
+    "Grapes of Wrath",
+    "Godel Escher Bach",
+    "Flash Boys",
+    "The Catcher in the Rye"
+  ],
+  "name": "Books",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638850909411,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee4cba8502157d0205951"
+      },
+      "user": "tagiles",
+      "content": "1984!"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4b0a8502157d0205921"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:21:20.468Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:27.967Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee160a8502157d020553b"
+  },
+  "items": [
+    "Switzerland",
+    "Iran",
+    "Japan",
+    "China",
+    "Korea"
+  ],
+  "name": "Countries to Visit",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638850928105,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4b0a8502157d0205919"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:21:52.963Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:00.056Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aee171a8502157d0205559"
+  },
+  "items": [
+    "Pizza",
+    "Nihari",
+    "Biryani",
+    "Pasta",
+    "Chickpeas"
+  ],
+  "name": "Foods",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638850950615,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee4c5a8502157d0205943"
+      },
+      "user": "tagiles",
+      "content": "Pizza is nice"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4afa8502157d0205911"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 2,
+  "createdAt": {
+    "$date": "2021-12-07T04:22:09.585Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:21.090Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee189a8502157d0205577"
+  },
+  "items": [
+    "Super Smash Bros Melee",
+    "Skyrim",
+    "Halo 3",
+    "Halo Reach",
+    "League of Legends"
+  ],
+  "name": "Games",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638850977186,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee226a8502157d020566b"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4ada8502157d0205909"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:22:33.573Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:35:57.818Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee1a2a8502157d0205596"
+  },
+  "items": [
+    "The Godfather",
+    "Dune",
+    "Interstellar",
+    "Parasite",
+    "Rush Hour 2"
+  ],
+  "name": "Movies",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638851006474,
+  "comments": [
+    {
+      "_id": {
+        "$oid": "61aee5b0a8502157d0205a74"
+      },
+      "user": "tagiles",
+      "content": "Interstellar is a good move"
+    },
+    {
+      "_id": {
+        "$oid": "61aee5b0a8502157d0205a76"
+      },
+      "user": "tagiles",
+      "content": "*movie"
+    }
+  ],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee226a8502157d0205667"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4aca8502157d0205901"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 2,
+  "createdAt": {
+    "$date": "2021-12-07T04:22:58.843Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:42:03.578Z"
+  },
+  "__v": 5
+},{
+  "_id": {
+    "$oid": "61aee1c1a8502157d02055b5"
+  },
+  "items": [
+    "Money",
+    "Time",
+    "Brain Damage",
+    "Eclipse",
+    "Wish You Were Here"
+  ],
+  "name": "Pink Floyd Songs",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638851028979,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee225a8502157d020565f"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4aca8502157d02058f9"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:23:29.113Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:35:56.279Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee1d7a8502157d02055d4"
+  },
+  "items": [
+    "C",
+    "Haskell",
+    "Java",
+    "Python",
+    "TypeScript"
+  ],
+  "name": "Programming Languages",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638851050489,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee225a8502157d0205657"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4aba8502157d02058f1"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:23:51.077Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:35:55.605Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee1eca8502157d02055f0"
+  },
+  "items": [
+    "Lakers",
+    "Giants",
+    "Yankees",
+    "Jets",
+    "Bills"
+  ],
+  "name": "Sports Teams",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638851066752,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee224a8502157d020564f"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4aaa8502157d02058e9"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:24:12.410Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:12.881Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee1fca8502157d0205611"
+  },
+  "items": [
+    "The Sopranos",
+    "Breaking Bad",
+    "Curb Your Enthusiasm",
+    "It's Always Sunny in Philadelphia",
+    "Better Call Saul"
+  ],
+  "name": "TV Shows",
+  "owner": "qjafri",
+  "isPublished": true,
+  "datePublished": 1638851096966,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee223a8502157d0205647"
+      },
+      "user": "qjafri",
+      "liked": true
+    },
+    {
+      "_id": {
+        "$oid": "61aee4aaa8502157d02058e1"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 2,
+  "createdAt": {
+    "$date": "2021-12-07T04:24:28.407Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:16.182Z"
+  },
+  "__v": 3
+},{
+  "_id": {
+    "$oid": "61aee21aa8502157d0205631"
+  },
+  "items": [
+    "?",
+    "?",
+    "?",
+    "?",
+    "?"
+  ],
+  "name": "Untitled10",
+  "owner": "qjafri",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:24:58.882Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:24:58.882Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61aee452a8502157d0205845"
+  },
+  "items": [
+    "Chicken",
+    "Cow",
+    "Pig",
+    "Fish",
+    "Turkey"
+  ],
+  "name": "Animals to Eat",
+  "owner": "tagiles",
+  "isPublished": true,
+  "datePublished": 1638851680606,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4d5a8502157d0205973"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:34:26.661Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:36:37.683Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aee462a8502157d0205861"
+  },
+  "items": [
+    "Switzerland",
+    "France",
+    "Finland",
+    "Norway",
+    "Italy"
+  ],
+  "name": "Countries to Visit",
+  "owner": "tagiles",
+  "isPublished": true,
+  "datePublished": 1638851698382,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4d5a8502157d020596f"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:34:42.410Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:16.234Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aee475a8502157d020587f"
+  },
+  "items": [
+    "Chocolate",
+    "Rice",
+    "Chicken Parmesan",
+    "Meatballs",
+    "Pasta"
+  ],
+  "name": "Food",
+  "owner": "tagiles",
+  "isPublished": true,
+  "datePublished": 1638851716557,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4d5a8502157d020596b"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 2,
+  "createdAt": {
+    "$date": "2021-12-07T04:35:01.134Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:16.240Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aee485a8502157d02058a0"
+  },
+  "items": [
+    "Outer Wilds",
+    "Apex Legends",
+    "Stardew Valley",
+    "Portal 2",
+    "Minecraft"
+  ],
+  "name": "Games",
+  "owner": "tagiles",
+  "isPublished": true,
+  "datePublished": 1638851738602,
+  "comments": [],
+  "userLikes": [
+    {
+      "_id": {
+        "$oid": "61aee4d4a8502157d0205963"
+      },
+      "user": "tagiles",
+      "liked": true
+    }
+  ],
+  "views": 1,
+  "createdAt": {
+    "$date": "2021-12-07T04:35:17.862Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:40:16.243Z"
+  },
+  "__v": 2
+},{
+  "_id": {
+    "$oid": "61aee49da8502157d02058bf"
+  },
+  "items": [
+    "?",
+    "?",
+    "?",
+    "?",
+    "?"
+  ],
+  "name": "Untitled4",
+  "owner": "tagiles",
+  "isPublished": false,
+  "datePublished": 0,
+  "comments": [],
+  "userLikes": [],
+  "views": 0,
+  "createdAt": {
+    "$date": "2021-12-07T04:35:41.803Z"
+  },
+  "updatedAt": {
+    "$date": "2021-12-07T04:35:41.803Z"
+  },
+  "__v": 0
+}]

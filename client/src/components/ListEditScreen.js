@@ -23,7 +23,11 @@ const ListEditScreen = () => {
         store.updateEditedList().then(store.publishEditedList)
     }
 
-    let canPublish = !(list.items.includes(undefined) || list.items.includes("") || (new Set(list.items).size !== list.items.length))
+    //Get this user's lists
+    let myListNames = store.getMyLists().filter((list) => (list.isPublished)).map((list) => (list.name))
+
+    //Check if this list can be published
+    let canPublish = !(list.items.includes(undefined) || list.items.includes("") || (new Set(list.items).size !== list.items.length) || myListNames.includes(list.name))
 
     return (
         <Box sx={{
