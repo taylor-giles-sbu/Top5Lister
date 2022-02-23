@@ -10,7 +10,7 @@ The Top 5 Lister was assigned as a final project for the CSE 316 Software Develo
 ## How to Run
 Since the Top 5 Lister was created as an assignment to teach MERN development, it uses MongoDB, Express, React and Node. Therefore, to run the app locally, the appropriate technologies will need to be installed.
 
-1. Fork this repository
+1. Clone this repository
 1. Install Node and run `npm install` in both the `client` directory and the `server` directory
 1. Install [MongoDB](https://docs.mongodb.com/manual/administration/install-community/) and start it on localhost port 4000
 1. In the `server` directory, run `npm install -g nodemon` and `nodemon index.js` to install and use nodemon to start the server
